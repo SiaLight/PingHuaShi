@@ -1,8 +1,5 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.info{
+ font-size: 14px;
+ padding: 10px;
 }
-.log-item {
-  margin: 10rpx;
-}
+

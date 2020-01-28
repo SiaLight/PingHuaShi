@@ -1,0 +1,7 @@
+<view>
+    <view wx:for="{{comment}}" wx:for-item="item">  
+        <view class="cardBord bg_white">
+        <commentCard comment="{{item}}" card="{{isCard}}"></commentCard>   
+        </view> 
+    </view>
+</view>

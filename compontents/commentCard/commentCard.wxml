@@ -1,0 +1,30 @@
+<view class="cu-card dynamic {{isCard?'no-card':''}} " >
+  <view class="cu-item shadow ">
+    <view class="cu-list menu-avatar">
+            <view class="cu-item">
+                 <view class="cu-avatar round lg" style="background-image:url(../../images/girl.png);"></view>
+                 <view class="content flex-sub">
+                     <view class="name">{{comment.name}}</view>
+                     <view class="text-gray text-sm flex justify-between">
+                     2019年12月3日
+                     </view>
+                </view>
+          <view class="ping" wx:if="{{card}}">
+          评论{{comment.courseName}}
+           </view>
+           <view > <star score="{{comment.score}}"></star></view>
+        </view>
+        <star score="{{comment.star}}"></star>
+           
+    </view>
+    <view class="text-content des">
+      {{comment.des}}
+    </view>
+    <view class="text-gray text-sm text-right padding">
+      <image src="../../images/zan.png"  class="iconI"/> {{comment.agree}}
+       <image src="../../images/cai.png" class="iconI"/> {{comment.disagree}}
+
+    </view>
+
+</view>
+</view>

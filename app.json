@@ -3,7 +3,12 @@
     "pages/index/index",
     "pages/course/course",
     "pages/teacher/teacher",
-    "pages/myinfo/myinfo"
+    "pages/myinfo/myinfo",
+    "pages/courseList/courseList",
+    "pages/courseDetail/courseDetail",
+    "pages/allCourseComment/allCourseComment",
+    "pages/teacherList/teacherList"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

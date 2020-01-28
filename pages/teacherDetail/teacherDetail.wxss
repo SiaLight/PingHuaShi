@@ -1,0 +1,88 @@
+.title{
+    padding-left: 15px;
+}
+.name{
+    font-size: 16px;
+    font-weight: bolder;
+}
+.des{
+    margin-top: 5px;
+    color: #353535;
+    font-size: 14px;
+    width:85%;
+    display: -webkit-box;
+  -webkit-box-orient:vertical;
+  text-overflow: ellipsis;
+  overflow:hidden; 
+}
+.ellipsis{
+    -webkit-line-clamp:2;
+  }
+  .unellipsis{
+    -webkit-line-clamp:0; 
+  }
+
+  .desBox{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+  }
+  .fold{
+      font-size: 12px;
+      color: #353535;
+  }
+
+  .score{
+      
+      margin-top: 10px;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
+  }
+ 
+  .Cscore{
+      font-size: 16px;
+      font-weight: bolder;
+  }
+
+  .num{
+      font-size: 12px;
+      color: #888888;
+  }
+  .scoreBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+ 
+  .courseBox{
+       width:90%;
+       margin-top: 10px;
+       padding: 10px;
+  }
+
+  .pingfen{
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+  }
+
+  .textQ{
+      font-size: 14px;
+      color: #353535;
+      margin-right: 10px;
+  }
+
+  .teacher{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .teacherBox{
+      padding: 5px;
+      margin-right: 10px;
+      border-bottom: #888888 1px solid;
+
+  }

@@ -1,0 +1,6 @@
+.cardBord{
+    border-bottom: solid 1px #999999;
+    padding:10px;
+    background-color: white;
+}
+

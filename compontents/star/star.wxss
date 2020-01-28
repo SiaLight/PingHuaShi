@@ -1,0 +1,9 @@
+.star{
+    width: 10px;
+    height: 10px;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+}
