@@ -1,31 +1,8 @@
 Page({
     data:{
-        course:{
-            name:"操作系统",
-            des:"操作这都快如果不会阿偶入会费is读和VB上的话从IEuhviauhbis恶如读后感艾欧合格敖曙光螯合钙",
-            score: 9.0,
-            Pnum:2,    
-        },
-        comment:{
-            name:"张同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        },
-        teachers:[
-            {
-                name: "张老师",
-                score: 6
-            },
-            {
-                name: "李老师",
-                score: 5
-            }
-        ],
+        course:{} ,
+        comment:{},
+        teachers:[],
         isFold:"展开",
         ellipsis: true,
         isCard: false
@@ -47,6 +24,47 @@ Page({
                 isFold: "收起"
               }) 
         }
+    },
+    onLoad: function(options){
+        console.log(options);
+        var that = this;
+        that.setData({
+          courseType: options.courseType,
+          courseName: options.courseName
+        })
+        wx.request({
+            url: 'http://www.ecnucs.club:8000/service/course/course_select', /*修改more_coursecmt即可*/
+            method: 'POST',
+            data: { /*根据接口需要选择需要POST的数据*/
+              course_type: that.data.courseType,
+              course_name: that.data.courseName
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log(res.data);
+              var len =  res.data.data.length;
+              var tea= [];
+              for(var i=2;i<len;i++){
+                  tea.push(res.data.data[i]);
+              }
+              that.setData({
+                course: res.data.data[0],
+                comment:  res.data.data[1][0],
+                teachers: tea
+            })
+            console.log(that.data.teachers);      
+            }
+          })
+    },
+    moreComment: function(e){
+       wx.navigateTo({
+            url: '../allCourseComment/allCourseComment?courseType='+e.currentTarget.dataset.courseType+'&courseName='+e.currentTarget.dataset.courseName,
+            success: (result)=>{
+                console.log("success");
+            }
+        });
     }
 
 

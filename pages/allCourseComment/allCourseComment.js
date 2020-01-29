@@ -1,41 +1,43 @@
 Page({
     data:{
-        comment:[
-        {
-            name:"张同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        },
-        {
-            name:"李同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        },
-        {
-            name:"张同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        }
-    ],
+        comment:[],
         isFold:"展开",
         ellipsis: true,
         isCard: false
 
     },
+    onLoad: function(options){
+        console.log(options);
+        var that = this;
+        that.setData({
+          courseType: options.courseType,
+          courseName: options.courseName
+        })
+        wx.request({
+          url: 'http://www.ecnucs.club:8000/service/course/more_coursecmt', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            course_type: that.data.courseType,
+            course_name:  that.data.courseName
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            var len = res.data.data.length;
+            var x= [];
+            for(var i=0;i<len;i++)
+            {
+                x.push(res.data.data[i][0]);
+            }
+ 
+            that.setData({
+                comment:x
+            })
+        
+          }
+        })
+      }
 
 })
