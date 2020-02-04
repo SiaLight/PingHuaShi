@@ -9,35 +9,71 @@ Page({
     onLoad: function(options){
         console.log(options);
         var that = this;
+        var x= parseInt(options.id);
         that.setData({
-          courseType: options.courseType,
-          courseName: options.courseName
+            id: options.id,
+            isCourse:  options.isCourse,
         })
-        wx.request({
-          url: 'http://www.ecnucs.club:8000/service/course/more_coursecmt', /*修改more_coursecmt即可*/
-          method: 'POST',
-          data: { /*根据接口需要选择需要POST的数据*/
-            course_type: that.data.courseType,
-            course_name:  that.data.courseName
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            console.log(res.data);
-            var len = res.data.data.length;
-            var x= [];
-            for(var i=0;i<len;i++)
-            {
-                x.push(res.data.data[i][0]);
-            }
- 
-            that.setData({
-                comment:x
-            })
+        if(that.data.isCourse=="true")
+        {
+          that.courseC();
+        }
+        else{
+          that.teacherC();
+        }
+       
+
+    },
+    courseC:function(){
+      var that = this;
+      wx.request({
+        url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+        method: 'POST',
+        data: { /*根据接口需要选择需要POST的数据*/
+          res_id: that.data.id,
+          res_type: '课程'
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            comment: res.data.data.comment_info
+          })
+          console.log(that.data.comment);
+        },
+        falied: function(){
+            console.log("error");
+        }
         
-          }
-        })
-      }
+      })
+    },
+    teacherC:function(){
+      var that = this;
+      wx.request({
+        url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+        method: 'POST',
+        data: { /*根据接口需要选择需要POST的数据*/
+          res_id: that.data.id,
+          res_type: '教师'
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            comment: res.data.data.comment_info
+          })
+          console.log(that.data.comment);
+        },
+        falied: function(){
+            console.log("error");
+        }
+        
+      })
+    }
+
 
 })

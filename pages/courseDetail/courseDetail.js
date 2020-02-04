@@ -1,11 +1,17 @@
 Page({
     data:{
-        course:{} ,
+
+        course:{},
+
         comment:{},
         teachers:[],
         isFold:"展开",
         ellipsis: true,
-        isCard: false
+        isCard: false,
+        isCourse:true,
+        nCourse: false,
+        commentL:0,
+        teacherL:0
 
     },
 
@@ -28,44 +34,98 @@ Page({
     onLoad: function(options){
         console.log(options);
         var that = this;
+
+        var x= parseInt(options.courseId);
         that.setData({
-          courseType: options.courseType,
-          courseName: options.courseName
+            courseId: options.courseId
         })
         wx.request({
-            url: 'http://www.ecnucs.club:8000/service/course/course_select', /*修改more_coursecmt即可*/
+          url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            course_id: that.data.courseId,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              course: res.data.data.courses[0]
+            })
+            console.log(that.data.course);
+            that.requestTeacher();
+            that.requestComment();
+          }
+        })
+        
+      },
+      requestTeacher: function(){
+          var that = this;
+        wx.request({
+            url: 'http://www.ecnucs.club:8000/service/course/course_teaching', /*修改more_coursecmt即可*/
             method: 'POST',
             data: { /*根据接口需要选择需要POST的数据*/
-              course_type: that.data.courseType,
-              course_name: that.data.courseName
+              res_id: that.data.courseId,
+              res_type: '课程'
+
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
               console.log(res.data);
-              var len =  res.data.data.length;
-              var tea= [];
-              for(var i=2;i<len;i++){
-                  tea.push(res.data.data[i]);
-              }
+
+              var x= res.data.data.teachers.length;
               that.setData({
-                course: res.data.data[0],
-                comment:  res.data.data[1][0],
-                teachers: tea
-            })
-            console.log(that.data.teachers);      
+                teachers: res.data.data.teachers,
+                teacherL: x
+              })
+              console.log(that.data.teachers);
+            },
+            error: function(){
+                console.log("error");
             }
+            
           })
+      },
+      requestComment: function(){
+        var that = this;
+      wx.request({
+          url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            res_id: that.data.courseId,
+            res_type: '课程'
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            var x= res.data.data.comment_info.length;
+            that.setData({
+              comment: res.data.data.comment_info[0],
+              commentL: x
+
+
+            })
+            console.log(that.data.comment);
+          },
+          error: function(){
+              console.log("error");
+          }
+          
+        })
     },
-    moreComment: function(e){
-       wx.navigateTo({
-            url: '../allCourseComment/allCourseComment?courseType='+e.currentTarget.dataset.courseType+'&courseName='+e.currentTarget.dataset.courseName,
-            success: (result)=>{
-                console.log("success");
-            }
-        });
-    }
-
-
+      moreComment: function(e){
+        wx.navigateTo({
+          url:'../allCourseComment/allCourseComment?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+        })
+      },
+      grade: function(e){
+        wx.navigateTo({
+          url:'../grade/grade?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+        })
+      }
 })

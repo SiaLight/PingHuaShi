@@ -1,0 +1,38 @@
+.starLen{
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  .star{
+    width:30px;
+    height:30px;
+    vertical-align:text-bottom;
+    display: inline-block;
+  }
+  
+  .scoreContent{
+    margin-left: 100px;
+    display: inline-block;
+  }
+  .starB{
+      margin-left: 55px;
+      margin-top: 20px;
+      /* padding-left: 50px; */
+  }
+ 
+  .text{
+      margin-top: 20px;
+      font-size: 14px;
+      width:80%;
+      margin-left: 20px;
+  }
+
+  .but{
+    position: fixed;
+    bottom:50px;
+    left:50%
+  }
+
+
+
+ 
