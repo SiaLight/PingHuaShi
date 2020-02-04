@@ -8,6 +8,14 @@ Component({
       },
       card:{
           type:Boolean
+      },
+      agree:{
+        default:'../../images/zan.png',
+        active:'../../images/zan-active.png'
+      },
+      disagree:{
+        default:'../../images/cai.png',
+        active:'../../images/cai-active.png'
       }
     },
     data: {
@@ -51,6 +59,7 @@ Component({
   
     },
     methods: {
+
       agree:function(){
         var that= this;
         console.log(that);
@@ -185,6 +194,7 @@ Component({
             console.log(res)
         }
       })
+
     }
   }
   })

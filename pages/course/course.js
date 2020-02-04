@@ -51,9 +51,11 @@ Page({
           inputVal: e.detail.value
       });
   },
+
   move: function(e){
     wx.navigateTo({
       url: '../courseList/courseList?type='+e.currentTarget.dataset.type,
     });
+
   }
 });

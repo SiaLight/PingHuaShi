@@ -1,6 +1,8 @@
 Page({
     data:{
+
         course:{},
+
         comment:{},
         teachers:[],
         isFold:"展开",
@@ -32,6 +34,7 @@ Page({
     onLoad: function(options){
         console.log(options);
         var that = this;
+
         var x= parseInt(options.courseId);
         that.setData({
             courseId: options.courseId
@@ -65,12 +68,14 @@ Page({
             data: { /*根据接口需要选择需要POST的数据*/
               res_id: that.data.courseId,
               res_type: '课程'
+
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
               console.log(res.data);
+
               var x= res.data.data.teachers.length;
               that.setData({
                 teachers: res.data.data.teachers,
@@ -102,6 +107,7 @@ Page({
             that.setData({
               comment: res.data.data.comment_info[0],
               commentL: x
+
 
             })
             console.log(that.data.comment);

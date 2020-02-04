@@ -40,6 +40,7 @@ Page({
     })
     wx.request({
       url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
+
       method: 'POST',
       data: { /*根据接口需要选择需要POST的数据*/
         course_type: that.data.type,
