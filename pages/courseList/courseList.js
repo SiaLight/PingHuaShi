@@ -3,30 +3,8 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
-      course:[
-        {
-          title: "操作系统",
-          image:"../../images/course.png"
-        },
-        {
-          title: "编译原理",
-          image:"../../images/course.png"
-        },
-        {
-          title: "计算机网络",
-          image:"../../images/course.png"
-        },  
-        {
-          title: "人工智能",
-          image:"../../images/course.png"
-        }, 
-         {
-          title: "数据库系统原理",
-          image:"../../images/course.png"
-        },
-
-
-      ]
+      course:[],
+      image:"../../images/course.png"
   },
   showInput: function () {
       this.setData({
@@ -53,5 +31,35 @@ Page({
     wx.navigateTo({
       url: '../courseList/courseList'
      })
+  },
+  onLoad: function(options){
+    console.log(options);
+    var that = this;
+    that.setData({
+      type: options.type
+    })
+    wx.request({
+      url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
+      method: 'POST',
+      data: { /*根据接口需要选择需要POST的数据*/
+        course_type: that.data.type,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          course: res.data.data.courses
+        })
+        console.log(that.data.course);
+      }
+    })
+  },
+  change: function(e){
+    wx.navigateTo({
+      url:'../courseDetail/courseDetail?courseId='+e.currentTarget.dataset.courseId
+    })
   }
+
 });

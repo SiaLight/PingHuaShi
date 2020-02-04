@@ -1,35 +1,15 @@
 Page({
     data:{
-        course:{
-            name:"李东",
-            des:"操作这都快如果不会阿偶入会费is读和VB上的话从IEuhviauhbis恶如读后感艾欧合格敖曙光螯合钙",
-            score: 9.0,
-            Pnum:2,    
-        },
-        comment:{
-            name:"张同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        },
-        teachers:[
-            {
-                name: "张老师",
-                score: 6
-            },
-            {
-                name: "李老师",
-                score: 5
-            }
-        ],
+        courses:[],
+        comment:{},
+        teacher:[],
         isFold:"展开",
         ellipsis: true,
-        isCard: false
-
+        isCard: false,
+        commentL:0,
+        courseL:0,
+        isCourse:true,
+        nCourse: false,
     },
 
     move: function(){
@@ -47,7 +27,97 @@ Page({
                 isFold: "收起"
               }) 
         }
-    }
+    },
+    onLoad: function(options){
+        console.log(options);
+        var that = this;
+        that.setData({
+          id: options.id
+        })
+        wx.request({
+          url: 'http://www.ecnucs.club:8000/service/teacher/listTeacher', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            id: that.data.id,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              teacher: res.data.data.teachers[0]
+            })
+            console.log(that.data.teacher);
+          }
+        })
 
+        that.requestCourse();
+        that.requestComment();
+      },
+      requestCourse: function(){
+        var that = this;
+        wx.request({
+            url: 'http://www.ecnucs.club:8000/service/course/course_teaching', /*修改more_coursecmt即可*/
+            method: 'POST',
+            data: { /*根据接口需要选择需要POST的数据*/
+              res_id: that.data.id,
+              res_type: '教师'
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log(res.data);
+              var x = res.data.data.courses.length;
+              that.setData({
+                courses: res.data.data.courses,
+                courseL: x
+              })
+              console.log(that.data.courses);
+            },
+            error: function(){
+                console.log("error");
+            }
+            
+          })
+      },
+    requestComment: function(){
+      var that = this;
+    wx.request({
+        url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+        method: 'POST',
+        data: { /*根据接口需要选择需要POST的数据*/
+          res_id: that.data.id,
+          res_type: '教师'
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+          var x= res.data.data.comment_info.length;
+            that.setData({
+                comment: res.data.data.comment_info[0],
+                commentL: x
+              })
+        
+          console.log(that.data.comment);
+        },
+        failed: function(res){
+            console.log(res)
+        }
+      })
+  },
+  grade: function(e){
+    wx.navigateTo({
+      url:'../grade/grade?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+    })
+  },
+  moreComment: function(e){
+    wx.navigateTo({
+      url:'../allCourseComment/allCourseComment?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+    })
+  },
 
 })

@@ -7,7 +7,9 @@
     "pages/courseList/courseList",
     "pages/courseDetail/courseDetail",
     "pages/allCourseComment/allCourseComment",
-    "pages/teacherList/teacherList"
+    "pages/teacherList/teacherList",
+    "pages/teacherDetail/teacherDetail",
+    "pages/grade/grade"
 
   ],
   "window": {
