@@ -1,0 +1,7 @@
+
+<view class="box">
+    <view wx:for="{{stars}}" wx:for-item="item">
+       <image  class="star" src="{{score/2>item.id ||score/2 == item.id ? selectedSrc:(item.id-score/2<1? halfSrc: normalSrc) }}"/>
+    </view>
+</view>
+
