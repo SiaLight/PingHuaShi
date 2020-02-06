@@ -7,13 +7,9 @@
     "pages/courseList/courseList",
     "pages/courseDetail/courseDetail",
     "pages/allCourseComment/allCourseComment",
-<<<<<<< HEAD
-    "pages/teacherList/teacherList"
-=======
     "pages/teacherList/teacherList",
     "pages/teacherDetail/teacherDetail",
     "pages/grade/grade"
->>>>>>> a286d6449980db23f5a062e9a0570988755b2ab3
 
   ],
   "window": {
