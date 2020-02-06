@@ -24,8 +24,13 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
+<<<<<<< HEAD
 	"appid": "wx57547cd41e9126ce",
 	"projectname": "%E8%AF%84%E5%8D%8E%E5%B8%887.0",
+=======
+	"appid": "wx018cf1ae827fba7e",
+	"projectname": "pinghuashi",
+>>>>>>> a286d6449980db23f5a062e9a0570988755b2ab3
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

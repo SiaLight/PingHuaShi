@@ -6,6 +6,10 @@ Component({
         type: Number,
         value: 0
       },
+      isStar: {
+        type: Boolean,
+        value: false
+      },
     },
     data: {
         stars: [

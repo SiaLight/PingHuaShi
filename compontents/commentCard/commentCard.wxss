@@ -27,7 +27,5 @@ image{
 overflow: hidden;
 }
 
-.cardBord{
-    border-bottom: solid 2px #888888;
-}
+
 

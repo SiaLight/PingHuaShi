@@ -1,34 +1,17 @@
 Page({
     data:{
-        course:{
-            name:"操作系统",
-            des:"操作这都快如果不会阿偶入会费is读和VB上的话从IEuhviauhbis恶如读后感艾欧合格敖曙光螯合钙",
-            score: 9.0,
-            Pnum:2,    
-        },
-        comment:{
-            name:"张同学",
-            courseName: "操作系统",
-            score:8,
-            des:"dkufbh 阿内如何给安慰刘荣华安慰刘国华了深度和阿尔派如何啊诶如果刘德国人爱胡歌奥如何给阿尔合格",
-            avatar:"../../images/girl.png",
-            star: 3,
-            agree:100,
-            disagree: 10,
-        },
-        teachers:[
-            {
-                name: "张老师",
-                score: 6
-            },
-            {
-                name: "李老师",
-                score: 5
-            }
-        ],
+
+        course:{},
+
+        comment:{},
+        teachers:[],
         isFold:"展开",
         ellipsis: true,
-        isCard: false
+        isCard: false,
+        isCourse:true,
+        nCourse: false,
+        commentL:0,
+        teacherL:0
 
     },
 
@@ -47,7 +30,102 @@ Page({
                 isFold: "收起"
               }) 
         }
-    }
+    },
+    onLoad: function(options){
+        console.log(options);
+        var that = this;
+
+        var x= parseInt(options.courseId);
+        that.setData({
+            courseId: options.courseId
+        })
+        wx.request({
+          url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            course_id: that.data.courseId,
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              course: res.data.data.courses[0]
+            })
+            console.log(that.data.course);
+            that.requestTeacher();
+            that.requestComment();
+          }
+        })
+        
+      },
+      requestTeacher: function(){
+          var that = this;
+        wx.request({
+            url: 'http://www.ecnucs.club:8000/service/course/course_teaching', /*修改more_coursecmt即可*/
+            method: 'POST',
+            data: { /*根据接口需要选择需要POST的数据*/
+              res_id: that.data.courseId,
+              res_type: '课程'
+
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log(res.data);
+
+              var x= res.data.data.teachers.length;
+              that.setData({
+                teachers: res.data.data.teachers,
+                teacherL: x
+              })
+              console.log(that.data.teachers);
+            },
+            error: function(){
+                console.log("error");
+            }
+            
+          })
+      },
+      requestComment: function(){
+        var that = this;
+      wx.request({
+          url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+          method: 'POST',
+          data: { /*根据接口需要选择需要POST的数据*/
+            res_id: that.data.courseId,
+            res_type: '课程'
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res.data);
+            var x= res.data.data.comment_info.length;
+            that.setData({
+              comment: res.data.data.comment_info[0],
+              commentL: x
 
 
+            })
+            console.log(that.data.comment);
+          },
+          error: function(){
+              console.log("error");
+          }
+          
+        })
+    },
+      moreComment: function(e){
+        wx.navigateTo({
+          url:'../allCourseComment/allCourseComment?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+        })
+      },
+      grade: function(e){
+        wx.navigateTo({
+          url:'../grade/grade?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
+        })
+      }
 })

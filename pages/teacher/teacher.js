@@ -5,30 +5,8 @@ Page({
   data: {
       inputShowed: false,
       inputVal: "",
-      course:[
-        {
-          title: "软件工程",
-          image:"../../images/course.png"
-        },
-        {
-          title: "信息学部",
-          image:"../../images/course.png"
-        },
-        {
-          title: "通识精品课程",
-          image:"../../images/course.png"
-        },  
-        {
-          title: "通识选修课程",
-          image:"../../images/course.png"
-        }, 
-         {
-          title: "体育类课程课程",
-          image:"../../images/course.png"
-        },
-
-
-      ]
+      colleage:[],
+      image:"../../images/course.png"
   },
   showInput: function () {
       this.setData({
@@ -55,5 +33,30 @@ Page({
     wx.navigateTo({
       url: '../courseList/courseList'
      })
+  },
+  onLoad: function(){
+    var that = this;
+    wx.request({
+      url: 'http://www.ecnucs.club:8000/service/teacher/listDept', /*修改more_coursecmt即可*/
+      method: 'POST',
+      data: { /*根据接口需要选择需要POST的数据*/
+        
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          colleage: res.data.data.depts
+        })
+        console.log(that.data.colleage);
+      }
+    })
+  },
+  change: function(e){
+    wx.navigateTo({
+      url:'../teacherList/teacherList?id='+e.currentTarget.dataset.id
+    })
   }
 });
