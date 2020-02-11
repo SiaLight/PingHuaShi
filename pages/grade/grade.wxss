@@ -30,7 +30,7 @@
   .but{
     position: fixed;
     bottom:50px;
-    left:50%
+    left:30%
   }
 
 

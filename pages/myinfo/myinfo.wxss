@@ -1,0 +1,161 @@
+.userinfo{
+  width:750rpx;
+  height:200rpx;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  background-color: white;
+  /*border: 3rpx #000 solid;*/
+}
+.portrait{
+  margin-top: 50rpx; 
+  width:150rpx;
+  height:140rpx;
+  margin-left:100rpx; 
+  /*border: 3rpx #000 solid;*/
+}
+.portrait_img{
+  width:120rpx;
+  height:120rpx;
+  /*border: 3rpx #000 solid;*/
+}
+.star_img{
+  width:35rpx;
+  height:35rpx;
+  /*border: 3rpx #000 solid;*/
+}
+.name{
+  margin-top: 50rpx;
+  color:black;
+  height:50rpx;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  /*border: 3rpx #000 solid;*/
+}
+.star{
+  text-align: center;
+  margin-top:10rpx;
+  /*margin-left:10rpx;*/
+}
+
+.log_out{
+  width: 120%;
+  margin-left: -10%;
+  margin-top: 100rpx;
+  border-radius: 0rpx;
+  background: white;
+  z-index: 999;
+}
+.title_return{
+ position:fixed;
+ top:30rpx;
+ color: white;
+ width: 70rpx; 
+ height: 70rpx;  
+ z-index: 999;
+ left:0rpx;
+}
+.title{
+ position:fixed;
+ top:0;
+ width: 100%; 
+ height: 120rpx;
+ background-color:gray;
+ text-align: center;
+ line-height: 120rpx;
+ font-size: 40rpx;
+ color:white;
+ z-index: 2;
+}
+.advice_contain{
+  margin-top:130rpx; 
+}
+.advicetext{
+  margin-top:130rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx; 
+  color:gray;
+  font-size: 32rpx;
+  background-color: white;
+  height: 850rpx;
+}
+.info{
+  font-size: 35rpx;
+}
+.on-motto{
+  background-color: white;
+  margin-left: 20rpx;
+  margin-right: 20rpx; 
+  width: 718rpx;
+  position: fixed;
+  bottom: 0rpx;
+  font-size: 40rpx;
+}
+.attach_mess{
+  z-index:9999;
+  margin-top: -300rpx;
+  margin-left: 150rpx; 
+}
+.operation{
+  font-size: 35rpx;
+  line-height:85rpx;
+  height: 85rpx; 
+  margin-left: 20rpx;
+  font-weight: 15rpx;
+}
+.operation_item{
+   height: 85rpx;
+   width: 100%;
+   display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+}
+.oth_portrait_img{
+  width:75rpx;
+  height:75rpx;
+  margin-left: 20rpx;
+}
+.other-name{
+  font-size: 35rpx;
+  line-height:85rpx;
+  height: 85rpx;  
+  margin-left: 20rpx;
+}
+.cardBord{
+    border-bottom: solid 1px #999999;
+    padding:10px;
+    background-color: white;
+}
+.identifi{
+  height:50rpx;
+  line-height: 50rpx;
+  /*z-index: 999999999999999;*/
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+  background-color:#afaeae;
+  color: white; 
+  /*border: 3rpx #000 solid;*/
+}
+.identifi::after{
+  height:50rpx;
+  line-height: 50rpx;
+  z-index: 999999999999999;
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+  background-color:#aaa;
+  color: white; 
+  /*border: 3rpx #000 solid;*/
+}
+.user-motto {
+  background-color:white;
+  margin-top: 50px;
+}
+

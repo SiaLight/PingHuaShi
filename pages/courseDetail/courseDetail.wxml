@@ -14,7 +14,7 @@
         </view>
         <view class=" radius shadow bg-white courseBox">
             <view wx:if="{{commentL>0}}">
-            <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>
+            <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>
             <view  bindtap="moreComment" data-id="{{courseId}}" data-is-course="{{isCourse}}">
             <text style="color:#000000">查看更多评论</text>
             <text class="cuIcon-right lg text-gray" style="color:#000000"></text>

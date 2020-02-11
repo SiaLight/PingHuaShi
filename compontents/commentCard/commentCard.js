@@ -8,6 +8,9 @@ Component({
       },
       card:{
           type:Boolean
+      },
+      userId:{
+        type:Number
       }
     },
     data: {
@@ -36,7 +39,6 @@ Component({
             disAgreeUrl: '../../images/cai-active.png'
           })
         }
-  
       },
       detached () {
   
@@ -48,7 +50,6 @@ Component({
     },
     // 挂载页面的生命周期
     pageLifetimes: {
-  
     },
     methods: {
       agree:function(){
@@ -57,55 +58,73 @@ Component({
         var id= that.data.comment.comment_id;
         var x = that.data.zan;
         if(that.data.zan.includes(id)){
-          wx.request({
-            url: 'http://www.ecnucs.club:8000/service/course/favor_comment', /*修改more_coursecmt即可*/
-            method: 'POST',
-            data: { /*根据接口需要选择需要POST的数据*/
-               comment_id: that.data.comment.comment_id,
-               isfavor_coursecmt: -1,
-               isoppose_coursecmt: 0
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
+
+          wx.showModal({
+            title: '提示',
+            content: '确定取消赞同吗？',
+            confirmText: "确定",
+            cancelText: "取消",
             success: function (res) {
-              console.log(res.data);
-            },
-            failed: function(res){
-                console.log(res)
+                console.log(res);
+                if (res.confirm) {
+                  wx.request({
+                    url: 'http://www.ecnucs.club:8000/service/comment/favor_comment', /*修改more_coursecmt即可*/
+                    method: 'POST',
+                    data: { /*根据接口需要选择需要POST的数据*/
+                       comment_id: that.data.comment.comment_id,
+                       isfavor_coursecmt: -1,
+                       isoppose_coursecmt: 0,
+                       user_id: that.data.userId
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                       if(res.data.code==0){
+                        var index = x.indexOf(id);
+                        x.splice(index, 1);
+                        that.setData({
+                         agreeUrl: '../../images/zan.png',
+                         zan: x
+                       })
+                       }
+                    },
+                    failed: function(res){
+                        console.log(res)
+                    }
+                  })
+                }else{
+                    console.log('用户点击辅助操作')
+                }
             }
-          })
-          var index = x.indexOf(id);
-           x.splice(index, 1);
-           that.setData({
-            agreeUrl: '../../images/zan.png',
-            zan: x
-          })
+        });
 
         }
         else{
           wx.request({
-            url: 'http://www.ecnucs.club:8000/service/course/favor_comment', /*修改more_coursecmt即可*/
+            url: 'http://www.ecnucs.club:8000/service/comment/favor_comment', /*修改more_coursecmt即可*/
             method: 'POST',
             data: { /*根据接口需要选择需要POST的数据*/
                comment_id: that.data.comment.comment_id,
                isfavor_coursecmt: 1,
-               isoppose_coursecmt: 0
+               isoppose_coursecmt: 0,
+               user_id: that.data.userId
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
-              console.log(res.data);
+              if(res.data.code==0){
+                x.push(id);
+          that.setData({
+            agreeUrl: '../../images/zan-active.png',
+            zan: x
+          })
+              }
             },
             failed: function(res){
                 console.log(res)
             }
-          })
-          x.push(id);
-          that.setData({
-            agreeUrl: '../../images/zan-active.png',
-            zan: x
           })
         }
       },
@@ -114,77 +133,77 @@ Component({
       var id= that.data.comment.comment_id;
       var x = that.data.cai;
       if(that.data.cai.includes(id)){
-        wx.request({
-          url: 'http://www.ecnucs.club:8000/service/course/favor_comment', /*修改more_coursecmt即可*/
-          method: 'POST',
-          data: { /*根据接口需要选择需要POST的数据*/
-             comment_id: that.data.comment.comment_id,
-             isfavor_coursecmt: 0,
-             isoppose_coursecmt: -1
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
+        wx.showModal({
+          title: '提示',
+          content: '确定取消赞同吗？',
+          confirmText: "确定",
+          cancelText: "取消",
           success: function (res) {
-            console.log(res.data);
-          },
-          failed: function(res){
-              console.log(res)
-          }
-        })
-         var index = x.indexOf(id);
-           x.splice(index, 1);
-        that.setData({
-          disAgreeUrl: '../../images/cai.png',
-          cai:x
-        })
+              console.log(res);
+              if (res.confirm) {
+                wx.request({
+                  url: 'http://www.ecnucs.club:8000/service/comment/favor_comment', /*修改more_coursecmt即可*/
+                  method: 'POST',
+                  data: { /*根据接口需要选择需要POST的数据*/
+                     comment_id: that.data.comment.comment_id,
+                     isfavor_coursecmt: 0,
+                     isoppose_coursecmt: -1,
+                     user_id: that.data.userId
+                  },
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  success: function (res) {
+                    console.log(res.data);
+                    if(res.data.code==0){
+                      var index = x.indexOf(id);
+                   x.splice(index, 1);
+                that.setData({
+                  disAgreeUrl: '../../images/cai.png',
+                  cai:x
+                })
+                    }
+                  },
+                  failed: function(res){
+                      console.log(res)
+                  }
+                })
+              }
+              else{
+                wx.request({
+                  url: 'http://www.ecnucs.club:8000/service/comment/favor_comment', /*修改more_coursecmt即可*/
+                  method: 'POST',
+                  data: { /*根据接口需要选择需要POST的数据*/
+                     comment_id: that.data.comment.comment_id,
+                     isfavor_coursecmt: 0,
+                     isoppose_coursecmt: -1,
+                     user_id:that.data.userId
+                  },
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  success: function (res) {
+                    console.log(res.data);
+                    if(res.data.code==0){
+                      x.push(id);
+                      that.setData({
+                        disAgreeUrl: '../../images/cai-active.png',
+                        cai:x
+                      })
+      
+
+                    }
+                  },
+                  failed: function(res){
+                      console.log(res)
+                  }
+                })
+              }
+            }
+          })
+
+        
       }
-      else{
-        wx.request({
-          url: 'http://www.ecnucs.club:8000/service/course/favor_comment', /*修改more_coursecmt即可*/
-          method: 'POST',
-          data: { /*根据接口需要选择需要POST的数据*/
-             comment_id: that.data.comment.comment_id,
-             isfavor_coursecmt: 0,
-             isoppose_coursecmt: -1
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            console.log(res.data);
-          },
-          failed: function(res){
-              console.log(res)
-          }
-        })
-        x.push(id);
-        that.setData({
-          disAgreeUrl: '../../images/cai-active.png',
-          cai:x
-        })
-      }
-    },
-    favor: function(fav,opp){
-      var that = this;
-      wx.request({
-        url: 'http://www.ecnucs.club:8000/service/course/ favor_comment', /*修改more_coursecmt即可*/
-        method: 'POST',
-        data: { /*根据接口需要选择需要POST的数据*/
-           comment_id: that.data.comment.comment_id,
-           isfavor_coursecmt: fav,
-           isoppose_coursecmt: opp
-        },
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          console.log(res.data);
-        },
-        failed: function(res){
-            console.log(res)
-        }
-      })
     }
   }
   })

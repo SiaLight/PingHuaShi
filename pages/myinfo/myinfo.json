@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+  "navigationBarTitleText": "个人信息",
+  "usingComponents": {
+    "star": "../../compontents/star/star",
+    "commentCard": "../../compontents/commentCard/commentCard"
   }
+}

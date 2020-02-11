@@ -28,11 +28,17 @@ Page({
               }) 
         }
     },
+    onShow: function (e){
+      console.log(app.globalData.user_detail)
+      this.setData({
+        user_id: app.globalData.user_detail.user_id
+      })
+    },
     onLoad: function(options){
         console.log(options);
         var that = this;
         that.setData({
-          id: options.id
+          id: options.id,
         })
         wx.request({
           url: 'http://www.ecnucs.club:8000/service/teacher/listTeacher', /*修改more_coursecmt即可*/
@@ -85,7 +91,7 @@ Page({
     requestComment: function(){
       var that = this;
     wx.request({
-        url: 'http://www.ecnucs.club:8000/service/course/more_comment', /*修改more_coursecmt即可*/
+        url: 'http://www.ecnucs.club:8000/service/comment/more_comment', /*修改more_coursecmt即可*/
         method: 'POST',
         data: { /*根据接口需要选择需要POST的数据*/
           res_id: that.data.id,
