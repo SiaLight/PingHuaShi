@@ -14,7 +14,7 @@
         </view>
         <view class=" radius shadow bg-white courseBox">
            <view wx:if="{{commentL>0}}">
-            <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>
+            <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>
             <view bindtap="moreComment" data-id="{{id}}" data-is-course="{{nCourse}}">
             <text style="color:#000000">查看更多评论</text>
             <text class="cuIcon-right lg text-gray" style="color:#000000"></text>
@@ -24,7 +24,7 @@
         </view>
         <view class="pingfen">
             <text class="textQ">轻点评分</text>
-            <view bindtap="grade" data-id="{{courseId}}" data-is-course="{{nCourse}}">
+            <view bindtap="grade" data-id="{{id}}" data-is-course="{{nCourse}}">
             <star score="0"></star>
             </view>
         </view>

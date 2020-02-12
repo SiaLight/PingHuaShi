@@ -84,7 +84,7 @@
 
        <view  wx:for="{{comment}}" wx:for-item="comment" wx:key="index" >  
          <view class="cardBord">
-           <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>   
+           <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>   
          </view> 
        </view>    
 
@@ -92,6 +92,5 @@
   </view>
    
  
-
 
 

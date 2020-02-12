@@ -7,13 +7,14 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-
+    var that =  this
     wx.login({
       success: res => {
         this.globalData.js_code = res.code
         //console.log(this.globalData.js_code)
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -35,6 +36,7 @@ App({
       }
     })
   },
+
   globalData: {
     is_init: false,
     isLogin: false,
@@ -43,10 +45,5 @@ App({
     js_code: null,
     user_detail:{},
   },
-
-
-  globalData: {
-    userInfo: null
-  }
 
 })

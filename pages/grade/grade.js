@@ -8,7 +8,12 @@ Page({
         scoreContent: '',
         comment:'' //文字显示评分情况
     },
-
+    onShow: function (e){
+      console.log(app.globalData.user_detail)
+      this.setData({
+        user: app.globalData.user_detail
+      })
+    },
     onLoad: function(options){
         console.log(options);
         var that = this;
@@ -63,13 +68,13 @@ Page({
       courseC:function(){
         var that = this;
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/course/submit_comment', /*修改more_coursecmt即可*/
+          url: 'http://www.ecnucs.club:8000/service/comment/submit_comment', /*修改more_coursecmt即可*/
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             res_id: that.data.id,
             res_type: '课程',
-            user_id: "1",
-            score: that.data.score,
+            user_id: that.data.user.user_id,
+            score: that.data.score*2,
             comment: that.data.comment
           },
           header: {
@@ -88,13 +93,13 @@ Page({
       teacherC:function(){
         var that = this;
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/course/submit_comment', /*修改more_coursecmt即可*/
+          url: 'http://www.ecnucs.club:8000/service/comment/submit_comment', /*修改more_coursecmt即可*/
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             res_id: that.data.id,
             res_type: '教师',
-            user_id: "1",
-            score: that.data.score,
+            user_id: that.data.user.user_id,
+            score: that.data.score*2,
             comment: that.data.comment
           },
           header: {

@@ -46,7 +46,7 @@
          <view class="advice_contain">
             <view  wx:for="{{my_comment}}" wx:for-item="comment" wx:key="index" >  
               <view class="cardBord">
-                <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>   
+                <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard>   
               </view> 
             </view>      
          </view>
@@ -60,7 +60,7 @@
          <view class="advice_contain">
            <view  wx:for="{{my_praise}}" wx:for-item="comment" wx:key="index" >  
               <view class="cardBord">
-                <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>   
+                <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard>   
               </view> 
             </view>      
          </view>
@@ -80,7 +80,7 @@
                <view class="operation" wx:if="{{item.news_detail.operation.isoppose==1}}">踩了您的评论：</view>
               </view>
               <view class="cardBord">
-                <commentCard comment="{{item}}" card="{{isCard}}"></commentCard> 
+                <commentCard comment="{{item}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard> 
               </view>
            </view>      
          </view>

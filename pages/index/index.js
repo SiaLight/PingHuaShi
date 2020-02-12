@@ -112,7 +112,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: res => {
-        //console.log(res.data)
+        console.log(res.data)
         wx.hideLoading()
         if (res.data.code == 0) {
           app.globalData.isLogin = true
@@ -123,7 +123,8 @@ Page({
             duration: 3000
           })
           that.setData({
-            page_num: 3, //切换到首页热评
+            page_num: 3,
+            user_id: app.globalData.user_detail.user_id //切换到首页热评
           })
         }
         else {
@@ -179,6 +180,7 @@ Page({
         }
       })
     }
+
     //获取openid
     wx.request({
       url: 'http://www.ecnucs.club:8000/service/user/getOpenid',

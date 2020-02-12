@@ -8,15 +8,13 @@
         <view class="scoreBox bg-white">
             <view class="score">
                 <text class="Cscore">{{course.avg_score}}</text>
-
                 <text class="num">{{course.cmt_cnt}}人已评分</text>
-
             </view>
             <star score="{{course.avg_score}}"></star>
         </view>
         <view class=" radius shadow bg-white courseBox">
             <view wx:if="{{commentL>0}}">
-            <commentCard comment="{{comment}}" card="{{isCard}}"></commentCard>
+            <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>
             <view  bindtap="moreComment" data-id="{{courseId}}" data-is-course="{{isCourse}}">
             <text style="color:#000000">查看更多评论</text>
             <text class="cuIcon-right lg text-gray" style="color:#000000"></text>
@@ -33,7 +31,6 @@
         <view wx:for="{{teachers}}" wx:for-item="item" wx:key="index" wx:if="{{teacherL>0}}">
             <view  class="teacherBox">
                 <view class="teacher">
-
                     <text style="margin-right:10px;font-size:14px;color:#000000">授课老师：{{item.name}}</text>
                     <star score="{{item.avg_score}}"></star>
                 </view>
