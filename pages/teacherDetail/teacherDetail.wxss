@@ -6,22 +6,16 @@
     font-weight: bolder;
 }
 .des{
-    margin-top: 5px;
-    color: #353535;
+    margin-top: 10px;
+    color: #0000FF;
     font-size: 14px;
     width:85%;
     display: -webkit-box;
   -webkit-box-orient:vertical;
   text-overflow: ellipsis;
   overflow:hidden; 
-}
-.ellipsis{
-    -webkit-line-clamp:2;
-  }
-  .unellipsis{
-    -webkit-line-clamp:0; 
-  }
 
+}
   .desBox{
       display: flex;
       flex-direction: row;

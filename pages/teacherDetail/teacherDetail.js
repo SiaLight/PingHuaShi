@@ -1,3 +1,4 @@
+var app=getApp();
 Page({
     data:{
         courses:[],
@@ -10,23 +11,6 @@ Page({
         courseL:0,
         isCourse:true,
         nCourse: false,
-    },
-
-    move: function(){
-        var value = !this.data.ellipsis;
-        this.setData({
-          ellipsis: value
-        });
-        if(this.ellipsis){
-            this.setData({
-                isFold: "展开"
-              }) ;
-        }
-        else{
-            this.setData({
-                isFold: "收起"
-              }) 
-        }
     },
     onShow: function (e){
       console.log(app.globalData.user_detail)

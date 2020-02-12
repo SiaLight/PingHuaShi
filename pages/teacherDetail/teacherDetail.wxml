@@ -1,9 +1,13 @@
 <view class="page">
     <view class="title bg-white">
-        <view class="name">{{teacher.name}}</view>
+        <view class="flex  justify-start align-end">
+        <view class="cu-avatar lg round margin-left" style="background-image:url({{teacher.avatar_url}});"></view>
+          <view class="name" style="margin-left:5px">{{teacher.name}}</view>
+          <view class="cu-tag radius" style="margin-left:10px">{{teacher.post}}</view>
+          <view class="cu-tag radius" style="margin-left:10px">{{teacher.dept}}</view>
+        </view>
         <view class="desBox">
-            <text class="des  {{ellipsis?'ellipsis':'unellipsis'}}">{{teacher.index_url}}</text>
-            <text bindtap="move" class="fold">{{isFold}}</text>
+            <text class="des" >{{teacher.index_url}}</text>        
         </view>
         <view class="scoreBox bg-white">
             <view class="score">

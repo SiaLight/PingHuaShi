@@ -1,3 +1,4 @@
+var app=getApp();
 Page({
     data:{
         fullStarUrl: '../../images/star/star_full.png', //满星图片

@@ -6,7 +6,7 @@
     font-weight: bolder;
 }
 .des{
-    margin-top: 5px;
+    margin-top: 10px;
     color: #353535;
     font-size: 14px;
     width:85%;

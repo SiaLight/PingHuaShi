@@ -1,6 +1,9 @@
 <view class="page">
     <view class="title bg-white">
+       <view class="flex  justify-start align-end">
         <view class="name">{{course.course_name}}</view>
+        <view class="cu-tag radius" style="margin-left:10px">{{course.course_type}}</view>
+        </view>
         <view class="desBox">
             <text class="des  {{ellipsis?'ellipsis':'unellipsis'}}">{{course.course_intro}}</text>
             <text bindtap="move" class="fold">{{isFold}}</text>

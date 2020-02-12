@@ -1,10 +1,12 @@
 //logs.js
 const util = require('../../utils/util.js')
-
+var app=getApp();
 Page({
   data: {
       teachers:[],
-      image:"../../images/course.png"
+      image:"../../images/course.png",
+      serachTeacher:[],
+      len:0
   },
   showInput: function () {
       this.setData({
@@ -23,9 +25,28 @@ Page({
       });
   },
   inputTyping: function (e) {
-      this.setData({
+    var that = this;
+      that.setData({
           inputVal: e.detail.value
       });
+      wx.request({
+        url: 'http://www.ecnucs.club:8000/service/teacher/listTeacher', /*修改more_coursecmt即可*/
+        method: 'POST',
+        data: { /*根据接口需要选择需要POST的数据*/
+          name: that.data.inputVal
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            serachTeacher: res.data.data.teachers,
+            len: res.data.data.count
+          })
+          console.log(that.data.serachTeacher);
+        }
+      })
   },
   onLoad: function(options){
     console.log(options);
