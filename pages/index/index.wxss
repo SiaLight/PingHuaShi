@@ -15,8 +15,6 @@
 .userinfo-nickname {
   color: #aaa;
 }
-
-<<<<<<< HEAD
 .user-motto {
   background-color:white;
   margin-top: 50px;
@@ -102,8 +100,4 @@ page{
    display: flex;
   /*row 横向  column 列表  */
   flex-direction: row;
-=======
-.usermotto {
-  margin-top: 200px;
->>>>>>> a286d6449980db23f5a062e9a0570988755b2ab3
 }

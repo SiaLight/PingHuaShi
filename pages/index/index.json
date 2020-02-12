@@ -1,11 +1,8 @@
 {
-<<<<<<< HEAD
+
   "navigationBarTitleText": "所有评价",
   "usingComponents": {
     "star": "../../compontents/star/star",
     "commentCard": "../../compontents/commentCard/commentCard"
   }
-=======
-  "usingComponents": {}
->>>>>>> a286d6449980db23f5a062e9a0570988755b2ab3
 }
