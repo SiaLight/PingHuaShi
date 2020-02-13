@@ -1,0 +1,96 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{page_num==0||page_num==1||page_num==2}}">
+  <view class="userinfo" wx:if="{{page_num==0}}" >
+    <button class="user-motto" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  </view>
+    <view class="userinfo" wx:if="{{page_num==1}}">
+    <block wx:if="{{hasUserInfo && canIUse}}">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <button class="user-motto" bindtap="register">点击注册</button>
+    </block>  
+    </view>
+
+<!--
+  <view class="userinfo" wx:if="{{page_num==0.5}}">
+         <view class="title">
+           注册账号
+         </view>
+         <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">账号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入账号" value="{{open_id}}" bindinput="get_open_id"/>
+                </view>
+            </view>
+         </view>
+         <view style="display:flex;">
+              <view class="weui-cell__ft">
+                    <icon wx:if="{{error_msg!=''}}" type="warn" size="23" color="#E64340"></icon>
+              </view>
+         <view class="weui-cells__tips">{{error_msg}}</view>
+         </view>
+         <view class="weui-cells__tips">请自拟账号进行注册（建议使用手机号）。账号由数字、字母组成，一旦确定将无法更改</view>
+         <button class="user-motto" bindtap="nextstep">下一步</button>
+  </view>
+-->
+
+
+   <view class="userinfo" wx:if="{{page_num==2}}">
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn_last'></image>
+         <view class="title">
+           身份认证
+         </view>
+         <button class="user-motto-22" bindtap="tourist">(跳过认证)以游客身份登陆使用>></button>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell  ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">学号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学号" value="{{stu_id}}" bindinput="get_stu_id"/>
+                </view>
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_id.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+            </view>
+            <view class="weui-cell  ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
+                </view>
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_psw.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">“评华师”为您的信息安全做出保证。</view>
+        <button class="user-motto" bindtap="auth_submit">确定提交</button>
+        
+
+   </view>
+</view>
+
+  <view wx:if="{{page_num==3}}">
+     <image class="indexback"  src='/images/indexback.png' mode="cover"></image>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <button class="index_choo">{{array[index]}}(点击切换）</button>
+            </picker>
+     <view> 
+
+       <view  wx:for="{{comment}}" wx:for-item="comment" wx:key="index" >  
+         <view class="cardBord">
+           <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>   
+         </view> 
+       </view>    
+
+     </view> 
+  </view>
+   
+ 
+
+

@@ -1,0 +1,31 @@
+<view class="cu-card dynamic {{isCard?'no-card':''}} " >
+  <view class="cu-item shadow ">
+    <view class="cu-list menu-avatar">
+            <view class="cu-item">
+                 <view class="cu-avatar round lg" style="background-image:url({{comment.avatar_url}});"></view>
+                 
+                 <view class="content flex-sub">
+                     <view class="name">{{comment.nick_name}}</view>
+                     <view class="text-gray text-sm flex justify-between">
+                     {{comment.date}} {{comment.time}}
+                     </view>
+                </view>
+          <view class="ping" wx:if="{{card}}">
+          评论{{comment.resName}}
+           </view>
+           <view > <star score="{{comment.score}}"></star></view>
+        </view>
+        <star score="{{comment.stars}}" isStar="{{isStar}}"></star>
+           
+    </view>
+    <view class="text-content des">
+      {{comment.comment}}
+    </view>
+    <view class="text-gray text-sm text-right padding">
+      <image src="{{agreeUrl}}"  class="iconI" bindtap="agree"/> {{comment.approve_num}}
+       <image src="{{disAgreeUrl}}" class="iconI" bindtap="disagree"/> {{comment.oppose_num}}
+
+    </view>
+
+</view>
+</view>
