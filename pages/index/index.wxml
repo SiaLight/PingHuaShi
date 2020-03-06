@@ -1,0 +1,22 @@
+<!--index.wxml-->
+
+
+  <scroll-view scroll-with-animation style="height: {{scrollHeight}}px" scroll-y scroll-top="{{scrollTop}}" bindscroll="scrolling">
+     <image class="indexback"  src='/images/indexback.png' mode="cover"></image>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <button class="index_choo">{{array[index]}}(点击切换）</button>
+            </picker>
+     <view> 
+
+       <view  wx:for="{{comment}}" wx:for-item="comment" wx:key="index" >  
+         <view class="cardBord">
+           <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>   
+         </view> 
+       </view>    
+
+     </view> 
+  </scroll-view>
+   
+ <image wx:if="{{visual}}" src="../../images/top.png" style="position: fixed; bottom: 40px; right: 40px; width: 40px; height: 40px;z-index:999;" bindtap="scrollToTop" ></image>
+
+

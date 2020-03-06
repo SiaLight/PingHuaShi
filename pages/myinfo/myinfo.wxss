@@ -1,0 +1,209 @@
+.userinfo{
+  width:750rpx;
+  height:300rpx;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  background-color: white;
+  /*border: 3rpx #000 solid;*/
+}
+.back{
+ width:100%;
+ height:300rpx;
+ z-index:2;
+}
+
+.portrait{
+  margin-top: -150rpx; 
+  width:150rpx;
+  height:140rpx;
+  margin-left:100rpx; 
+  z-index:9;
+  /*border: 3rpx #000 solid;*/
+}
+.portrait_img{
+  width:120rpx;
+  height:120rpx;
+  z-index:9;
+  /*border: 3rpx #000 solid;*/
+}
+.star_img{
+  width:35rpx;
+  height:35rpx;
+  z-index:9;
+  /*border: 3rpx #000 solid;*/
+}
+.name{
+  margin-top: -150rpx;
+  color:black;
+  height:50rpx;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  z-index:9;
+  /*border: 3rpx #000 solid;*/
+}
+.star{
+  text-align: center;
+  margin-top:-80rpx;
+  z-index:9;
+  /*margin-left:10rpx;*/
+}
+
+.log_out{
+  width: 120%;
+  margin-left: -10%;
+  margin-top: 100rpx;
+  border-radius: 0rpx;
+  background: white;
+  z-index: 999;
+}
+.title_return{
+ position:fixed;
+ top:5%;
+ color: white;
+ width: 70rpx; 
+ height: 70rpx;  
+ z-index: 999;
+ left:0rpx;
+}
+.title{
+ position:fixed;
+ top:0rpx;
+ width: 100%; 
+ height: 12%;
+ background-color:rgb(252, 201, 206);
+ text-align: center;
+ line-height: 500%;
+ font-size: 40rpx;
+ color:white;
+ z-index: 2;
+}
+.advice_contain{
+  padding-top: 22%;
+  width:100%;
+}
+.advicetext{
+  margin-top:150rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx; 
+  color:gray;
+  font-size: 32rpx;
+  background-color: white;
+  height: 850rpx;
+}
+.info{
+  font-size: 35rpx;
+}
+.on-motto{
+  width:80%;
+  margin-left: 10%;
+  margin-right: 20rpx; 
+  font-size: 40rpx;
+  margin-top:10rpx;
+  background: white;
+}
+.attach_mess{
+  z-index:9999;
+  margin-top: -300rpx;
+  margin-left: 150rpx; 
+}
+.operation{
+  font-size: 35rpx;
+  line-height:85rpx;
+  height: 85rpx; 
+  margin-left: 20rpx;
+  font-weight: 15rpx;
+}
+.operation_item{
+   height: 85rpx;
+   width: 100%;
+   display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+}
+.oth_portrait_img{
+  width:75rpx;
+  height:75rpx;
+  margin-left: 20rpx;
+}
+.other-name{
+  font-size: 35rpx;
+  line-height:85rpx;
+  height: 85rpx;  
+  margin-left: 20rpx;
+}
+.cardBord{
+    border-bottom: solid 1px #999999;
+    padding:10px;
+    background-color: white;
+}
+.identifi{
+  height:50rpx;
+  line-height: 50rpx;
+  /*z-index: 999999999999999;*/
+  margin-top: -150rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+  background-color:#afaeae;
+  color: white; 
+  z-index:9;
+  /*border: 3rpx #000 solid;*/
+}
+.identifi::after{
+  height:50rpx;
+  line-height: 50rpx;
+  z-index: 999999999999999;
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+  background-color:#aaa;
+  color: white; 
+  /*border: 3rpx #000 solid;*/
+}
+.user-motto {
+  background-color:white;
+  margin-top: 50px;
+}
+.feed{
+  position:fixed;
+  top:130rpx;
+  width:100%;
+  height:100%;
+  background:rgb(168,168,168,0.8);
+}
+.feedback {
+  position:fixed;
+  top:150rpx;
+  width:90%;
+  margin-left:5%;
+  height:70%;
+  margin-top:10%;
+  background:white;
+  border-radius: 10rpx;
+}
+.feedtext{
+  width:90%;
+  margin-left:5%;
+  height:70%;
+  margin-top:30rpx;
+  font-size:30rpx;
+  line-height:40rpx;
+}
+.feedtitle{
+  font-size:38rpx;
+  color:black;
+  display: flex;
+  width:100%;
+  height:80rpx;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top:10rpx;
+  border-bottom:3rpx dashed #EA8F8F;
+}

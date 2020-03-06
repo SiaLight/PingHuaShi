@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/course/course",
+    "pages/teacher/teacher",
+    "pages/myinfo/myinfo",
+    "pages/courseList/courseList",
+    "pages/courseDetail/courseDetail",
+    "pages/allCourseComment/allCourseComment",
+    "pages/teacherList/teacherList",
+    "pages/teacherDetail/teacherDetail",
+    "pages/grade/grade"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "评华师",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#EA8F8F",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "images/tabs/home.png",
+        "selectedIconPath": "images/tabs/homeSelected.png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "课程评价",
+        "iconPath": "images/tabs/course.png",
+        "selectedIconPath": "images/tabs/courseSelected.png"
+      },
+      {
+        "pagePath": "pages/teacher/teacher",
+        "text": "教师评价",
+        "iconPath": "images/tabs/teacher.png",
+        "selectedIconPath": "images/tabs/teacherSelected.png"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "我的信息",
+        "iconPath": "images/tabs/my.png",
+        "selectedIconPath": "images/tabs/mySelected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

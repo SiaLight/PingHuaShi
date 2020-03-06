@@ -1,0 +1,49 @@
+<view class="page">
+    <view class="title bg-white">
+        <view class="flex  justify-start align-end">
+        <view class="cu-avatar lg round margin-left" style="background-image:url({{teacher.avatar_url}});"></view>
+          <view class="name" style="margin-left:5px">{{teacher.name}}</view>
+          <view class="cu-tag radius" style="margin-left:10px">{{teacher.post}}</view>
+          <view class="cu-tag radius" style="margin-left:10px">{{teacher.dept}}</view>
+        </view>
+        <view class="desBox">
+            <text class="des" >{{teacher.index_url}}</text>        
+        </view>
+        <view class="scoreBox bg-white">
+            <view class="score">
+                <text class="Cscore">{{teacher.avg_score}}</text>
+                <text class="num">{{teacher.cmt_cnt}}人已评分</text>
+            </view>
+            <star score="{{teacher.avg_score}}"></star>
+        </view>
+        <view class=" radius shadow bg-white courseBox">
+           <view wx:if="{{commentL>0}}">
+            <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>
+            <view bindtap="moreComment" data-id="{{id}}" data-is-course="{{nCourse}}">
+            <text style="color:#000000">查看更多评论</text>
+            <text class="cuIcon-right lg text-gray" style="color:#000000"></text>
+            </view>
+            </view>
+            <view wx:else>暂无该教师相关评论！</view>
+        </view>
+        <view class="pingfen">
+            <text class="textQ">轻点评分</text>
+            <view bindtap="grade" data-id="{{id}}" data-is-course="{{nCourse}}">
+            <star score="0"></star>
+            </view>
+        </view>
+        <view wx:for="{{courses}}" wx:for-item="item" wx:if="{{courseL>0}}">
+            <view  class="teacherBox">
+                <view class="teacher">
+                    <text style="margin-right:10px;font-size:14px;color:#000000">所授课程：{{item.name}}</text>
+                    <star score="{{item.avg_score}}"></star>
+                </view>
+                <view bindtap="moreComment" data-id="{{item.course_id}}" data-is-course="{{isCourse}}">
+                <text>查看更多关于课程的评论</text>
+                <text class="cuIcon-right lg text-gray" ></text>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{courseL==0}}">暂无该教师相关课程！</view>
+    </view>
+</view>
