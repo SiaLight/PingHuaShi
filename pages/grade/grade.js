@@ -33,7 +33,7 @@ Page({
         var starMinX = 55;//最左边第一颗星的X坐标,假设距离页面距离为0
         var starWidth = 30;//星星图标的宽度,假设30(已在wxss文件中设置".star")
         var starLen = 10;//星星之间的距离假设为10(已在wxss文件中设置".starLen")
-        var starMaxX = starWidth * 5 + starLen * 4;//最右侧星星最右侧的X坐标,需要加上5个星星的宽度和4个星星间距
+        var starMaxX = starWidth * 5 + starLen * 4+starMinX;//最右侧星星最右侧的X坐标,需要加上5个星星的宽度和4个星星间距
     
         if (touchX > starMinX && touchX < starMaxX) {//点击及触摸的初始位置在星星所在空间之内
         //使用Math.ceil()方法取得当前触摸位置X坐标相对于(星星+星星间距)之比的整数,确定当前点击的是第几个星星

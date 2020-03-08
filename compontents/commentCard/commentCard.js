@@ -1,5 +1,6 @@
 
 var count = 0;
+var app = getApp();
 Component({
   properties: {
 
@@ -75,7 +76,7 @@ Component({
                   comment_id: that.data.comment.comment_id,
                   isfavor_comment: -1,
                   isoppose_comment: 0,
-                  user_id: that.data.userId
+                  user_id: app.globalData.user_detail.user_id
                 },
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
@@ -112,7 +113,7 @@ Component({
             comment_id: that.data.comment.comment_id,
             isfavor_comment: 1,
             isoppose_comment: 0,
-            user_id: that.data.userId
+            user_id: app.globalData.user_detail.user_id
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'
@@ -150,7 +151,7 @@ Component({
                         comment_id: that.data.comment.comment_id,
                         isfavor_comment: -1,
                         isoppose_comment: 0,
-                        user_id: that.data.userId
+                        user_id: app.globalData.user_detail.user_id
                       },
                       header: {
                         'content-type': 'application/x-www-form-urlencoded'
@@ -212,7 +213,7 @@ Component({
                   comment_id: that.data.comment.comment_id,
                   isfavor_comment: 0,
                   isoppose_comment: -1,
-                  user_id: that.data.userId
+                  user_id: app.globalData.user_detail.user_id
                 },
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
@@ -250,7 +251,7 @@ Component({
             comment_id: that.data.comment.comment_id,
             isfavor_comment: 0,
             isoppose_comment: 1,
-            user_id: that.data.userId
+            user_id: app.globalData.user_detail.user_id
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'
@@ -289,7 +290,7 @@ Component({
                         comment_id: that.data.comment.comment_id,
                         isfavor_comment: 0,
                         isoppose_comment: -1,
-                        user_id: that.data.userId
+                        user_id: app.globalData.user_detail.user_id
                       },
                       header: {
                         'content-type': 'application/x-www-form-urlencoded'

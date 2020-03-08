@@ -5,7 +5,7 @@ Page({
     inputShowed: false,
     inputVal: "",
     colleage: [],
-    image: "../../images/course.png",
+    image: "../../images/xueyuan.png",
     serachTeacher: [],
     len: 0
   },

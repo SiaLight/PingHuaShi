@@ -4,7 +4,7 @@ var app=getApp();
 Page({
   data: {
       teachers:[],
-      image:"../../images/course.png",
+      image:"../../images/tea.png",
       serachTeacher:[],
       len:0
   },

@@ -35,6 +35,11 @@ Page({
           },
           success: function (res) {
             console.log(res.data);
+            var tea = res.data.data.teachers[0];
+            if(tea.avatar_url=="")
+            {
+              tea.avatar_url="../../images/teacher.png"
+            }
             that.setData({
               teacher: res.data.data.teachers[0]
             })
