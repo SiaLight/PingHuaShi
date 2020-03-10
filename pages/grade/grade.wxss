@@ -1,0 +1,44 @@
+.starLen{
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  .star{
+    width:30px;
+    height:30px;
+    vertical-align:text-bottom;
+    display: inline-block;
+  }
+  
+  .scoreContent{
+    margin-left: 100px;
+    display: inline-block;
+  }
+  .starB{
+      text-align: center;
+      /*margin-left: 55px;*/
+      margin-top: 30px;
+      /* padding-left: 50px; */
+  }
+ 
+  .text{
+      margin:0 auto;
+      margin-top: 30px;
+      font-size: 14px;
+      width:80%;
+      height:600rpx;
+      /*margin-left: 20px;*/
+  }
+
+  .but{
+    position: fixed;
+    bottom:70px;
+    width:100%;
+    text-align:center;
+    /*margin-top:50%;*/
+    /*left:50%;*/
+  }
+
+
+
+ 

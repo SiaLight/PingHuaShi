@@ -1,0 +1,24 @@
+<view>
+  <view class="starB">
+    <block wx:for='{{scoreArray}}' wx:key='item'>
+      <!-- 遍历评分列表 -->
+      <!-- 设置触摸事件和点击事件为同一个方法,否则点击却不滑动的话,不触发事件 -->
+      <view class='starLen' bindtouchmove='changeScore' bindtap='changeScore'>
+        <!-- 使用三目运算符来动态变化显示的是哪张图片,score是js中的分数,index是scoreArray的下标 -->
+        <!-- src部分可以这样写 src="{{score>index?'../../images/fullStar.png':'../../images/nullStar.png'}}"  ，这样可以在js文件把fullStarUrl和nullStarUrl去掉 -->
+        <image class='star' src="{{score>index?fullStarUrl:nullStarUrl}}" />
+      </view>
+    </block>
+  </view>
+  
+  <view class="text">
+    <textarea placeholder="写下你的评论来帮助更多人吧(不得超过200字)..." maxlength="{{maxWords}}" bindinput="input"></textarea> 
+  </view>
+
+  <view style="height=20rpx; width:90%;display: flex;justify-content:flex-end; font-size:28rpx; color:rgb(177, 176, 176);">{{currentWords}}/{{maxWords}}</view>
+
+  <view class="but">
+    <button class="weui-btn" style="width:40%;" type="primary" bindtap="submit">提交评价</button>
+  </view>
+
+</view>

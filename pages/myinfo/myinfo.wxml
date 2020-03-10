@@ -1,0 +1,169 @@
+<view class="page">
+       <view wx:if='{{ispage_num==0&&hasLogout==false}}'>
+        <view class="userinfo" > 
+           <image class="back" src='../../images/back.jpg' ></image>
+            <view class="portrait">
+              <image class="portrait_img" src='{{user.avatar_url}}'></image> 
+            </view>
+
+            <view>
+
+            <view style="display:flex;">
+              <view class="name">{{user.nick_name}}</view>
+              <button class="identifi" wx:if="{{hasidenti==1}}" bindtap="identifi">已认证</button>
+              <button class="identifi" wx:if="{{hasidenti==0}}" bindtap="identifi">点击认证 </button>
+            </view>
+
+             <view class="star">
+              <block wx:if='{{user.stars>0}}'> 
+                <block wx:for='{{user.stars-0}}' wx:key='un'>
+                   <image class='star_img' src='/images/star/star_full.png'></image>
+                </block>
+                <!--<image wx:if='{{item.grade>0.5}}'class='star_img' src='/images/star/star_half.png'></image>-->
+              </block>
+             </view>
+             
+            </view>
+
+        </view>
+
+        <view class="list">
+          <view class="weui-cells weui-cells_after-title" wx:for="{{course}}" wx:for-item="item" wx:key="index">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd" style="display:flex;" bindtap="{{item.jump}}">{{item.title}}
+                  <block wx:if="{{index == 2 && news_num > 0}}">
+                  <view wx:if="{{news_num>=100}}"style="color: white;border-radius:50%;width:50rpx;height:30rpx;background:#e54d42;line-height:30rpx;font-size:25rpx;z-index:9999;margin-left:-5rpx;margin-top:-5rpx;  text-align: center;">99+</view>
+                  <view wx:else style="color: white;border-radius:50%;width:30rpx;height:30rpx;background:#e54d42;line-height:30rpx;font-size:25rpx;z-index:9999;margin-left:-5rpx;margin-top:-5rpx; text-align: center;">{{news_num}}</view>
+                  </block>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </view>
+
+        <button class='log_out' bindtap="logout">退出登录 </button>
+       </view>
+
+       <view wx:if='{{ispage_num==1}}'>
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn'></image>
+         <view class="title">
+           我的评价
+         </view>
+         <view class="advice_contain">
+            <view  wx:for="{{my_comment}}" wx:for-item="comment" wx:key="index" >  
+              <view class="cardBord">
+                <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard>   
+              </view> 
+            </view>      
+         </view>
+       </view>
+
+       <view wx:if='{{ispage_num==2}}'>
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn'></image>
+         <view class="title">
+           我的赞
+         </view>
+         <view class="advice_contain">
+           <view  wx:for="{{my_praise}}" wx:for-item="comment" wx:key="index" >  
+              <view class="cardBord">
+                <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard>   
+              </view> 
+            </view>      
+         </view>
+       </view>
+
+       <view wx:if='{{ispage_num==3}}'>
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn'></image>
+         <view class="title">
+           我的消息
+         </view>
+         <view class="advice_contain">
+           <view wx:for="{{my_message}}" wx:for-item="item" wx:key="key">  
+              <view class="operation_item" style="margin-top:25rpx;">  
+               <!--><image wx:if="{{!item.news_detail.operation.has_read}}" src="../../images/dot.png" style="height:15rpx;width:15rpx;margin-top:20rpx;margin-left:20rpx;"></image><-->
+               <view wx:if="{{!item.news_detail.operation.has_read}}" style="color: white;border-radius:50%;width:15rpx;height:15rpx;background:#e54d42;line-height:30rpx;font-size:25rpx;margin-top:10rpx;margin-left:20rpx;"></view>
+               <image class="oth_portrait_img" style="border-radius: 50%;" src='{{item.news_detail.userinfo.avatar_url}}'></image>
+               <view class="other-name">{{item.news_detail.userinfo.nick_name}}</view>
+               <view class="operation" wx:if="{{item.news_detail.operation.isfavor==1}}">赞了您的评论：</view>
+               <view class="operation" wx:if="{{item.news_detail.operation.isoppose==1}}">踩了您的评论：</view>
+              </view>
+              <view class="cardBord">
+                <commentCard comment="{{item}}" card="{{isCard}}" userId="{{user.user_id}}"></commentCard> 
+              </view>
+           </view>      
+         </view>
+       </view>
+
+       <view wx:if='{{ispage_num==4 || ispage_num >10}}' style="height:100%;width:100%;">
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn'></image>
+         <view class="title">
+           意见反馈
+         </view>
+         <view class="advice_contain">  
+          <view class="info" style="margin-top:5rpx;">请选择反馈内容</view>
+          <view class="list">
+            <view class="weui-cells weui-cells_after-title" wx:for="{{advice}}" wx:for-item="item" wx:key="key">
+              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd" bindtap="{{item.jump}}">{{item.title}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </view>
+            </view>
+          </view> 
+         </view>   
+       </view>
+
+       
+       <view wx:for="{{advice}}" wx:for-item="item" wx:key="key">
+          <view wx:if="{{item.tag==ispage_num}}" >
+            <view class="feed"> </view> 
+              <view class="feedback">
+                <view class="feedtitle">
+                 <view style="width:50%;margin-left:20%;line-height:80rpx;">
+                   {{item.title}}
+                 </view> 
+                <image src="../../images/close.png" style="margin-top:10rpx;margin-left:15%;height:45rpx;width:45rpx;" bindtap="jumpto4"></image>
+                </view>
+                <view class="feedtext">
+                  <textarea  style="height:100%;" type='text' maxlength="{{maxWords}}"  placeholder="请写下您发现的问题，我们将会尽快处理"  bindinput='get_advice'/> 
+                </view>
+                  <view style="height=20rpx; width:90%;display: flex;justify-content:flex-end; font-size:28rpx; color:rgb(177, 176, 176);">{{currentWords}}/{{maxWords}}</view>
+                <image src="../../images/send.png" class="on-motto" bindtap="commiton"></image>
+              </view>
+          </view>
+       </view>
+
+     <view class="container" wx:if="{{ispage_num==5}}">
+       
+         <image class="title_return" src='/images/return.png' bindtap='jumpreturn'></image>
+         <view class="title">
+           身份认证
+         </view>
+         <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell  ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">学号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学号" value="{{stu_id}}" bindinput="get_stu_id"/>
+                </view>
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_id.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+            </view>
+            <view class="weui-cell  ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
+                </view>
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_psw.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+            </view>
+         </view>
+         <view class="weui-cells__tips">"评华师"为您的信息安全做出保证。</view>
+         <button class="user-motto" bindtap="auth_submit">确定提交</button>
+        
+     </view>  
+</view>
