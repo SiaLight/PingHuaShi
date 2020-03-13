@@ -75,6 +75,9 @@ Page({
       }
     })
   },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
   move: function (e) { /************函数名改动**************/
     wx.navigateTo({
       url: '../teacherList/teacherList?id=' + e.currentTarget.dataset.id

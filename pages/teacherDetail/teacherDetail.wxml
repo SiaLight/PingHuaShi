@@ -16,7 +16,7 @@
         </view>
         <view style="padding-left:15px">
             <view class="desBox">
-                <text class="des">{{teacher.index_url}}</text>
+                <text class="des" bindtap="showTeacherIndex" >{{teacher.index_url}}</text>
             </view>
             <view class="scoreBox bg-white">
                 <view class="score">
@@ -44,9 +44,8 @@
             <view wx:for="{{courses}}" wx:for-item="item" wx:if="{{courseL>0}}">
                 <view class="teacherBox">
                     <view class="teacher">
-                        <text style="margin-right:10px;font-size:14px;color:#000000">
-                            所授课程：{{item.name}}
-                        </text>
+                        <text style="margin-right:10px;font-size:14px;color:#000000">所授课程：{{item.name}}
+</text>
                         <star score="{{item.avg_score}}"></star>
                     </view>
                     <view bindtap="moreComment" data-id="{{item.course_id}}" data-is-course="{{isCourse}}">

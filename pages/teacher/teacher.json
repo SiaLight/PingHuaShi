@@ -1,3 +1,4 @@
 {  "navigationBarTitleText": "教师",
-    "usingComponents": {}
+    "usingComponents": {},
+    "enablePullDownRefresh": false
   }

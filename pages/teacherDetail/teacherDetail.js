@@ -137,5 +137,12 @@ Page({
       url:'../allCourseComment/allCourseComment?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
     })
   },
+  showTeacherIndex:function(e){
+    //var idx = e.currentTarget.dataset.teacheridx
+    var url = this.data.teacher.index_url
+      wx.navigateTo({
+        url: '../teacherIndex/teacherIndex?url=' + url,
+      })
+  }
 
 })

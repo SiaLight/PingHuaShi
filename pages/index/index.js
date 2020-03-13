@@ -55,9 +55,20 @@ Page({
       success: res => {
         wx.hideLoading()
         console.log(res.data)
-        that.setData({
-          comment: res.data.data.comment_info,
-        })
+        if (res.data.code == 0)
+          that.setData({
+            comment: res.data.data.comment_info,
+          })
+        else {
+          that.setData({
+            comment: [],
+          })
+          wx.showToast({
+            title: '无记录',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       },
       fail: res => {
         wx.hideLoading()
@@ -109,9 +120,20 @@ Page({
       success: res => {
         wx.hideLoading()
         console.log(res.data)
-        that.setData({
-          comment: res.data.data.comment_info,
-        })
+        if(res.data.code == 0)
+          that.setData({
+            comment: res.data.data.comment_info,
+          })
+        else{
+          that.setData({
+            comment: [],
+          })
+          wx.showToast({
+            title: '无记录',
+            icon: 'none',
+            duration: 2000
+          })
+        }  
       },
       fail: res => {
         wx.hideLoading()
@@ -162,6 +184,9 @@ Page({
         visual: true
       })
     }
+  },
+  onPullDownRefresh:function(){
+    wx.stopPullDownRefresh();
   }
 })
 

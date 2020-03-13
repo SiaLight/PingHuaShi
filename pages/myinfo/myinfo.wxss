@@ -60,23 +60,19 @@
 }
 
 .log_out{
-  width: 120%;
-  margin-left: -10%;
-  margin-top: 100rpx;
+  margin-top: 120rpx;
   border-radius: 0rpx;
   background: white;
-  z-index: 999;
-  border:2rpx solid #EA8F8F;
+  border-top:1rpx solid #EA8F8F;
+  border-bottom:1rpx solid #EA8F8F;
 }
 
 .log_out::after{
-  width: 120%;
-  margin-left: -10%;
-  margin-top: 100rpx;
+  margin-top: 120rpx;
   border-radius: 0rpx;
   background: white;
-  z-index: 999;
-  border:1rpx solid #EA8F8F;
+  border-top:1rpx solid #EA8F8F;
+  border-bottom:1rpx solid #EA8F8F;
 }
 
 .title_return{
@@ -161,7 +157,6 @@
 .identifi{
   height:50rpx;
   line-height: 50rpx;
-  /*z-index: 999999999999999;*/
   margin-top: -150rpx;
   margin-left: 20rpx;
   font-size: 30rpx;
@@ -170,7 +165,6 @@
   background-color:#afaeae;
   color: white; 
   z-index:9;
-  /*border: 3rpx #000 solid;*/
 }
 .identifi::after{
   height:50rpx;

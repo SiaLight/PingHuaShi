@@ -10,7 +10,8 @@
     "pages/allCourseComment/allCourseComment",
     "pages/teacherList/teacherList",
     "pages/teacherDetail/teacherDetail",
-    "pages/grade/grade"
+    "pages/grade/grade",
+    "pages/teacherIndex/teacherIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",

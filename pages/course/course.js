@@ -37,6 +37,9 @@ Page({
 
     ]
   },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
   showInput: function () {
     this.setData({
       inputShowed: true
