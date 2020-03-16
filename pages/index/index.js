@@ -4,6 +4,11 @@ var app = getApp()
 
 Page({
   data: {
+    swiper_url:[
+      '../../images/intro1.png',
+      '../../images/intro2.png',
+      '../../images/intro3.png',
+    ],
     title_msg: '登录成功',
     userInfo: {},
     stu_id: null,

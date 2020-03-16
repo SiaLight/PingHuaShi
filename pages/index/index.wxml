@@ -1,13 +1,25 @@
 <!--index.wxml-->
+  <swiper indicator-dots="true" autoplay="true" class="banners" interval="3000" duration="2000">
+    <block wx:for="{{swiper_url}}" wx:key="index" for-item="item">
+      <swiper-item class="banner">
+        <image src="{{item}}" class="indexback" bindtap="bindViewTap" class="banner-image" style="width:100%;height:100%;" mode="cover" />
+      </swiper-item>
+    </block>
+  </swiper>
 
-  <scroll-view scroll-with-animation style="height: {{scrollHeight}}px" scroll-y scroll-top="{{scrollTop}}" bindscroll="scrolling" bindscrolltoupper="refresh">
+
+
+  <scroll-view scroll-with-animation style="margin-top:400rpx;height: {{scrollHeight}}px" scroll-y scroll-top="{{scrollTop}}" bindscroll="scrolling" bindscrolltoupper="refresh">
+
+  <!-->
      <image class="indexback"  src='/images/indexback.png' mode="cover"></image>
-            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-                <button class="index_choo">{{array[index]}}(点击切换）</button>
-            </picker>
-     <view> 
+--> <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <button class="index_choo">{{array[index]}}(点击切换）</button>
+    </picker>
 
-       <view  wx:for="{{comment}}" wx:for-item="comment" wx:key="index" >  
+     <view style="margin-top:60rpx;"> 
+
+       <view  wx:for="{{comment}}"  wx:for-item="comment" wx:key="index" >  
          <view class="cardBord">
            <commentCard comment="{{comment}}" card="{{isCard}}" userId="{{user_id}}"></commentCard>   
          </view> 
