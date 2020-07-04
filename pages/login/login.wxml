@@ -1,0 +1,75 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="userinfo" wx:if="{{page_num==0}}" >
+    <image src="../../images/logo.png" style="height:200rpx;width:200rpx;"></image>
+    <view style="font-size:38rpx;">评华师  </view>
+    <view style="color:#aaaa;font-size:30rpx;">校内课程与教师评价平台</view>
+    <button class="user-motto" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 同意微信登陆 </button>
+    <view style="margin-top:50rpx;font-size:30rpx;" wx:if="{{hasUserInfo && canIUse}}">请选择登陆身份:</view>
+    <view style="display:flex;flex-direction:row;" wx:if="{{hasUserInfo && canIUse}}">
+      <button class="ch" style="margin-right:15rpx;" bindtap="student">学工身份</button>
+      <button class="ch" style="margin-left:15rpx;" bindtap="tourist">游客身份</button>
+    </view> 
+
+  </view>
+  <!-->
+  <view class="userinfo" wx:if="{{page_num==1}}">
+    <block wx:if="{{hasUserInfo && canIUse}}">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <button class="user-motto" bindtap="register">点击注册</button>
+    </block>  
+  </view>
+  <-->
+
+
+
+   <view class="userinfo" wx:if="{{page_num==1}}">
+         <image class="title_return" src='/images/return1.png' bindtap='jumpreturn_last'></image>
+         <view class="title">
+           身份认证
+         </view>
+         
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell  " style="border:none">
+                <view class="weui-cell__hd" style="border:none">
+                    <view class="weui-label">学号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学号" value="{{stu_id}}" bindinput="get_stu_id"/>
+                </view>
+<!-->
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_id.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+<-->
+            </view>
+            <view class="weui-cell  " style="border:none">
+                <view class="weui-cell__hd" style="border:none">
+                    <view class="weui-label">密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" type="password" placeholder="请输入密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
+                </view>
+<!-->  
+                <view class="weui-cell__ft">
+                    <icon wx:if="{{stu_psw.length==0}}" type="warn" size="23" color="#E64340"></icon>
+                </view>
+<-->
+            </view>
+        </view>
+        
+
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <button class="index_choo" >{{array[index]}}</button>
+    </picker>
+
+        <view class="weui-cells__tips" style="margin-top:130rpx;">“评华师”为您的信息安全做出保证。</view>
+
+        <button class="user-motto" bindtap="auth_submit">确定提交</button>
+
+       
+        
+
+   </view>
+</view>

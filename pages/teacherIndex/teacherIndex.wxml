@@ -1,0 +1,3 @@
+<!--pages/teacherIndex/teacherIndex.wxml-->
+<web-view src="{{detail_link}}#wechat_redirect"></web-view>
+

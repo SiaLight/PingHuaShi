@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "主页",
+  "usingComponents": {
+    "star": "../../compontents/star/star",
+    "commentCard": "../../compontents/commentCard/commentCard"
+  },
+"enablePullDownRefresh": false
+}
