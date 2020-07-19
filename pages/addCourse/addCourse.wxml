@@ -1,0 +1,64 @@
+<view class="page">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell  ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">课程名称</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入课程名称" value="{{name}}" bindinput="get_name" />
+            </view>
+        </view>
+        <view class="weui-cell  ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">课程类别</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker mode="selector" bindchange="typeChange" value="{{index}}" range="{{courseType}}">
+                    <view>{{courseType[index]}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="weui-cell  ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">学生专业</view>
+            </view>
+            <view class="weui-cell__bd">
+                <view bindtap="showModal" data-target="ChooseModal">请点击选择</view>
+                <view class="grid col-2">
+                <view wx:for="{{checkbox}}" wx:key="{{index}}">
+                   <view class="cu-tag round" wx:if="{{item.checked}}">
+                   {{item.name}}
+                   </view>
+                </view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cell  ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">课程简介</view>
+            </view>
+            <view class="weui-cell__bd">
+                <textarea adjust-position="{{true}}" placeholder="请输入简介" value="{{des}}" maxlength="200" bindblur="get_des"></textarea>
+            </view>
+        </view>
+    </view>
+    <view>
+    <button class="add">确认添加</button>
+    </view>
+
+</view>
+<view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+        <view class="cu-bar bg-white">
+            <view class="action text-blue" bindtap="hideModal">取消</view>
+            <view class="action text-green" bindtap="hideModal">确定</view>
+        </view>
+        <view class="grid col-3 padding-sm">
+            <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
+                <button class="cu-btn red lg block {{item.checked?'bg-red':'line-red'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}">
+                    {{item.name}}
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

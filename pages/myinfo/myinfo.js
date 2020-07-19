@@ -453,6 +453,11 @@ Page({
       }
     })
   },
+  addcourse:function(){
+    wx.navigateTo({
+      url: '../addCourse/addCourse',
+    });
+  }
   
 
 });

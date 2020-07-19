@@ -177,3 +177,6 @@
         
      </view>  
 </view>
+<view class="plus">
+   <image src="../../images/addcourse.png"  class="add" bindtap="addcourse"/>
+</view>

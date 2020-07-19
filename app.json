@@ -11,7 +11,8 @@
     "pages/teacherList/teacherList",
     "pages/teacherDetail/teacherDetail",
     "pages/grade/grade",
-    "pages/teacherIndex/teacherIndex"
+    "pages/teacherIndex/teacherIndex",
+    "pages/addCourse/addCourse"
   ],
   "window": {
     "backgroundTextStyle": "light",
