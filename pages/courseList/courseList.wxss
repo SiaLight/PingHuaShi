@@ -2,3 +2,7 @@
     font-size: 14px;
      padding:10px; 
    }
+   .picker{
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+}

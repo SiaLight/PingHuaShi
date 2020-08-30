@@ -11,3 +11,13 @@
     color: white;
     border-radius: 5px ;
 }
+.proffessions{
+height:120rpx;
+font-size: 30rpx;
+line-height: 35rpx;
+}
+.addType{
+    width: 60rpx;
+    height: 60rpx;
+}
+

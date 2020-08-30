@@ -1,6 +1,10 @@
 <!-- logs.wxml -->
 <view class="page">
     <view class="weui-search-bar">
+        <picker mode="selector" bindchange="typeChange" class="picker" value="{{index}}" range="{{professions}}" range-key="name">
+            <text >{{professions[index].name}}</text>
+            <text class="cuIcon-triangledownfill"></text>
+        </picker>
         <view class="weui-search-bar__form">
             <view class="weui-search-bar__box">
                 <icon class="weui-icon-search_in-box" type="search" size="14"></icon>

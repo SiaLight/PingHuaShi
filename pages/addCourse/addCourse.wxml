@@ -23,14 +23,18 @@
                 <view class="weui-label">学生专业</view>
             </view>
             <view class="weui-cell__bd">
-                <view bindtap="showModal" data-target="ChooseModal">请点击选择</view>
-                <view class="grid col-2">
-                <view wx:for="{{checkbox}}" wx:key="{{index}}">
-                   <view class="cu-tag round" wx:if="{{item.checked}}">
-                   {{item.name}}
-                   </view>
+                <view wx:if="{{!chooseProfess.length}}" bindtap="showModal" data-target="ChooseModal">请点击选择</view>
+                <view wx:elif="{{isAll}}" class="flex flex-wrap justify-start align-center">
+                    <view class="cu-tag round">不限专业</view>
+                    <image src="../../images/addP.png" class="addType"  bindtap="showModal" data-target="ChooseModal"/>
                 </view>
+                <view wx:else class="flex flex-wrap justify-start align-center">
+                    <view wx:for="{{chooseProfess}}" wx:key="index">
+                        <view class="cu-tag round" wx:if="{{item.checked}}">{{item.name}}</view>
+                    </view>
+                    <image src="../../images/addP.png" class="addType"  bindtap="showModal" data-target="ChooseModal"/>
                 </view>
+                
             </view>
         </view>
         <view class="weui-cell  ">
@@ -43,9 +47,8 @@
         </view>
     </view>
     <view>
-    <button class="add">确认添加</button>
+        <button class="add" bindtap="add">确认添加</button>
     </view>
-
 </view>
 <view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog" catchtap>
@@ -53,9 +56,9 @@
             <view class="action text-blue" bindtap="hideModal">取消</view>
             <view class="action text-green" bindtap="hideModal">确定</view>
         </view>
-        <view class="grid col-3 padding-sm">
-            <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
-                <button class="cu-btn red lg block {{item.checked?'bg-red':'line-red'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}">
+        <view class="grid col-3 padding-xs">
+            <view wx:for="{{checkbox}}" class="padding-xs" wx:key="index">
+                <button class=" red flex flex-wrap justify-between align-center block proffessions {{item.checked?'bg-red':'line-red'}} proffessions" bindtap="ChooseCheckbox" data-value="{{item.id}}">
                     {{item.name}}
                 </button>
             </view>
