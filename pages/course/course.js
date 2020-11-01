@@ -7,6 +7,9 @@ Page({
     inputVal: "",
     serachCourse: [],
     len: 0,
+    professions:[],
+    index:0,
+    role: 1,
     course: [
       {
         title: "学科基础课程",
@@ -34,6 +37,11 @@ Page({
 
     ]
   },
+  onLoad:function(){
+    
+    this.getAllType()
+  },
+
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh();
   },
@@ -58,12 +66,24 @@ Page({
     that.setData({
       inputVal: e.detail.value
     });
-    wx.request({
-      url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
-      method: 'POST',
-      data: { /*根据接口需要选择需要POST的数据*/
+    let index = that.data.index
+    let data
+    if(index==0)
+    {
+      data={
         course_name: that.data.inputVal
-      },
+      }
+    }
+    else{
+      data={
+        course_name: that.data.inputVal,
+        course_proId: [that.data.professions[index].id]
+      }
+    }
+    wx.request({
+      url: app.globalData.rootDomain + '/service/course/listCourse', /*修改more_coursecmt即可*/
+      method: 'POST',
+      data: data,
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -79,12 +99,70 @@ Page({
   },
   move: function (e) {
     wx.navigateTo({
-      url: '../courseList/courseList?type=' + e.currentTarget.dataset.type,
+      url: '../courseList/courseList?type=' + e.currentTarget.dataset.type + '&pindex=' + this.data.index + '&pid=' + this.data.professions[this.data.index].id,
     });
   },
   change: function (e) {
     wx.navigateTo({
-      url: '../courseDetail/courseDetail?courseId=' + e.currentTarget.dataset.id
+      url: '../courseDetail/courseDetail?courseId=' + e.currentTarget.dataset.id 
     })
-  }
+
+  },
+  onShow:function(){
+    var k = app.globalData.stu_pro_index
+    this.setData({
+      index: k,
+      role: app.globalData.user_detail.role
+    })
+    console.log(this.data.index)
+  },
+
+  getAllType:function(){
+    let self = this
+   
+    wx.request({
+      url:app.globalData.rootDomain + '/service/teacher/listProfession',
+      method:'POST',
+      success:function(res){
+        console.log('zhuanye')
+        console.log(res)
+        let professions = res.data.data.professions
+        let all={
+          name:'不限专业',
+          id:0
+        }
+        professions.splice(0,0,all)
+        self.setData({
+          professions:professions,
+          
+        })
+        console.log(self.data.index)
+        
+      },
+      fail:function(err){
+        console.log(err)
+
+      }
+
+    })
+
+  },
+  typeChange:function(e){
+    let index =  e.detail.value
+  this.setData({
+      index:index
+  })
+
+},
+addcourse:function(){
+  wx.navigateTo({
+    url: '../addCourse/addCourse',
+  });
+},
+
+addteaching: function () {
+  wx.navigateTo({
+    url: '../addTeaching/addTeaching',
+  });
+},
 });

@@ -70,7 +70,7 @@ Component({
             console.log(res);
             if (res.confirm) {
               wx.request({
-                url: 'http://www.ecnucs.club:8000/service/comment/favor_comment',
+                url: app.globalData.rootDomain + '/service/comment/favor_comment',
                 method: 'POST',
                 data: { /*根据接口需要选择需要POST的数据*/
                   comment_id: that.data.comment.comment_id,
@@ -107,7 +107,7 @@ Component({
       }
       else {
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/comment/favor_comment',
+          url: app.globalData.rootDomain + '/service/comment/favor_comment',
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             comment_id: that.data.comment.comment_id,
@@ -145,7 +145,7 @@ Component({
                   console.log(res);
                   if (res.confirm) {
                     wx.request({
-                      url: 'http://www.ecnucs.club:8000/service/comment/favor_comment',
+                      url: app.globalData.rootDomain + '/service/comment/favor_comment',
                       method: 'POST',
                       data: { /*根据接口需要选择需要POST的数据*/
                         comment_id: that.data.comment.comment_id,
@@ -207,7 +207,7 @@ Component({
             console.log(res);
             if (res.confirm) {
               wx.request({
-                url: 'http://www.ecnucs.club:8000/service/comment/favor_comment',
+                url: app.globalData.rootDomain + '/service/comment/favor_comment',
                 method: 'POST',
                 data: { /*根据接口需要选择需要POST的数据*/
                   comment_id: that.data.comment.comment_id,
@@ -245,7 +245,7 @@ Component({
       }
       else {
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/comment/favor_comment', /*修改more_coursecmt即可*/
+          url: app.globalData.rootDomain + '/service/comment/favor_comment', /*修改more_coursecmt即可*/
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             comment_id: that.data.comment.comment_id,
@@ -284,7 +284,7 @@ Component({
                   console.log(res);
                   if (res.confirm) {
                     wx.request({
-                      url: 'http://www.ecnucs.club:8000/service/comment/favor_comment',
+                      url: app.globalData.rootDomain + '/service/comment/favor_comment',
                       method: 'POST',
                       data: { /*根据接口需要选择需要POST的数据*/
                         comment_id: that.data.comment.comment_id,

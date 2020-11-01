@@ -104,7 +104,7 @@ Page({
           success(res){
             if(res.confirm){
               wx.request({
-                url: 'http://www.ecnucs.club:8000/service/comment/submit_comment', /*修改more_coursecmt即可*/
+                url: app.globalData.rootDomain + '/service/comment/submit_comment', /*修改more_coursecmt即可*/
                 method: 'POST',
                 data: { /*根据接口需要选择需要POST的数据*/
                   res_id: that.data.id,
@@ -133,7 +133,7 @@ Page({
       teacherC:function(){
         var that = this;
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/comment/submit_comment', /*修改more_coursecmt即可*/
+          url: app.globalData.rootDomain + '/service/comment/submit_comment', /*修改more_coursecmt即可*/
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             res_id: that.data.id,

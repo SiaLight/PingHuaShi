@@ -25,7 +25,8 @@
 
 
    <view class="userinfo" wx:if="{{page_num==1}}">
-         <image class="title_return" src='/images/return1.png' bindtap='jumpreturn_last'></image>
+         <!--><image class="title_return" src='/images/return1.png' bindtap='jumpreturn_last'></image><-->
+         <view bindtap="tourist_login">>>游客登录</view>
          <view class="title">
            身份认证
          </view>
@@ -33,10 +34,10 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell  " style="border:none">
                 <view class="weui-cell__hd" style="border:none">
-                    <view class="weui-label">学号</view>
+                    <view class="weui-label">学工号</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入学号" value="{{stu_id}}" bindinput="get_stu_id"/>
+                    <input class="weui-input" placeholder="请输入学工号" value="{{stu_id}}" bindinput="get_stu_id"/>
                 </view>
 <!-->
                 <view class="weui-cell__ft">
@@ -49,7 +50,7 @@
                     <view class="weui-label">密码</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" type="password" placeholder="请输入密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
+                    <input class="weui-input" type="password" placeholder="请输入公共数据库密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
                 </view>
 <!-->  
                 <view class="weui-cell__ft">
@@ -60,8 +61,8 @@
         </view>
         
 
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <button class="index_choo" >{{array[index]}}</button>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}"  range-key="name">
+      <button class="index_choo" >{{array[index].name}}</button>
     </picker>
 
         <view class="weui-cells__tips" style="margin-top:130rpx;">“评华师”为您的信息安全做出保证。</view>

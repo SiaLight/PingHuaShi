@@ -4,15 +4,18 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -20,12 +23,21 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"preloadBackgroundData": false,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": []
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
 	"appid": "wx637af67a977cbafb",
-	"projectname": "pinghuashi%E6%9C%80%E6%96%B0%E7%89%88",
+	"projectname": "ecmt",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

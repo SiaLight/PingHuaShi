@@ -9,7 +9,7 @@ Page({
     hasLogout: false,
     ispage_num: 0,
     adtag: 0,
-    advice_text: "未知",
+    advice_text: "",
     hasidenti: false,
     stu_id: null,
     stu_pwd: null,
@@ -18,7 +18,7 @@ Page({
     my_message: [],
     user: null,
     isCard: true,
-    array: ['点击此处选择专业', '计算机科学与技术', '软件工程', '心理认知科学'],
+    array: [],
     index: 0,
     course: [
       {
@@ -91,12 +91,14 @@ Page({
 
   onLoad:function(e){
     var that = this;
+    this.getAllType()
     app.globalData.timerB = setInterval(function () {
       //console.log('timerB')
       that.setData({
         news_num: app.globalData.news_num
       })
     }, 1000) 
+    
   },
 
   onShow: function (e) {
@@ -106,7 +108,7 @@ Page({
         hasLogout: false,
         user: app.globalData.user_detail
       })
-      if (app.globalData.user_detail.role == 2)
+      if (app.globalData.user_detail.role > 1)
         this.setData({
           hasidenti: true,
         })
@@ -119,7 +121,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/my_comment',
+      url: app.globalData.rootDomain + '/service/comment/my_comment',
       method: 'POST',
       data: {
         user_id: app.globalData.user_detail.user_id
@@ -134,6 +136,20 @@ Page({
         that.setData({
           my_comment: res.data.data
         })
+        if(res.data.data.length == 0){
+          wx.showToast({
+            title: '无记录',
+            icon: 'none',   
+            duration: 2000,
+            success(res) {
+              setTimeout(function () {
+                that.setData({
+                  ispage_num: 0
+                })
+              }, 1000)
+            }    
+          })
+        }
       },
       fail: res => {
         wx.stopPullDownRefresh();
@@ -153,7 +169,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/my_approval',
+      url: app.globalData.rootDomain + '/service/comment/my_approval',
       method: 'POST',
       data: {
         user_id: app.globalData.user_detail.user_id
@@ -168,6 +184,20 @@ Page({
         that.setData({
           my_praise: res.data.data
         })
+        if(res.data.data.length == 0){
+          wx.showToast({
+            title: '无记录',
+            icon: 'none',   
+            duration: 2000,
+            success(res) {
+              setTimeout(function () {
+                that.setData({
+                  ispage_num: 0
+                })
+              }, 1000)
+            }    
+          })
+        }
       },
       fail: res => {
         wx.stopPullDownRefresh();
@@ -187,7 +217,7 @@ Page({
     })
     var that = this
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/my_news',
+      url: app.globalData.rootDomain + '/service/comment/my_news',
       method: 'POST',
       data: {
         user_id: app.globalData.user_detail.user_id
@@ -202,6 +232,20 @@ Page({
         that.setData({
           my_message: res.data.data
         })
+        if(res.data.data.length == 0){
+          wx.showToast({
+            title: '无记录',
+            icon: 'none',   
+            duration: 2000,
+            success(res) {
+              setTimeout(function () {
+                that.setData({
+                  ispage_num: 0
+                })
+              }, 1000)
+            }    
+          })
+        }
       },
       fail: res => {
         wx.stopPullDownRefresh();
@@ -342,6 +386,7 @@ Page({
 
   commiton: function (e) {
     var that = this;
+    let typename = e.currentTarget.dataset.errtype;
     if(that.data.currentWords == 0){
       wx.showToast({
         title: '请输入内容',
@@ -349,18 +394,57 @@ Page({
       })
       return;
     }
+    console.log(typename)
+    console.log(that.data.advice_text)
     wx.showModal({
       content: '确定提交？',
       success(res){
         if(res.confirm){
-          wx.showToast({
-            title: '提交成功',
-            icon: 'success',
-            duration: 2000
-          });
-          that.setData({
-            ispage_num: 4
-          })
+          wx.request({
+            url:app.globalData.rootDomain + '/service/feedback/submitErr',
+            method:'POST',
+            data:{
+              err_type: typename,
+              err_content:that.data.advice_text
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success:function(res){
+              console.log(res)
+              if(res.data.code == 0){
+                
+                wx.showToast({
+                  title: '提交成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.setData({
+                  ispage_num: 4,
+                  currentWords: 0,
+                  advice_text: ''
+                })
+          
+              }
+              else{
+                wx.showToast({
+                  title: '提交失败',
+                  icon: 'none',
+                  duration: 2000
+                });
+              }
+            },
+            fail:function(err){
+              console.log(err)
+              wx.showToast({
+                title: '添加失败',
+                icon: 'none',   
+                duration: 2000     
+              })  
+            }
+            })
+          
+          
         }
       }
     })
@@ -410,7 +494,7 @@ Page({
       title: '加载中',
     });
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/user/auth',
+      url: app.globalData.rootDomain + '/service/user/auth',
       method: 'POST',
       data: {
         id: app.globalData.user_detail.user_id,
@@ -429,7 +513,7 @@ Page({
             icon: 'success',
             duration: 3000
           })
-          app.globalData.user_detail.role = 2
+          app.globalData.user_detail.role = res.data.data.role
           that.setData({
             hasidenti: true
           })
@@ -453,6 +537,42 @@ Page({
       }
     })
   },
-  
+
+
+  bindPickerChange: function (e) {
+    var that = this;
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    that.setData({
+      comment: [],
+      index: e.detail.value,
+      choose_index: e.detail.value
+    })
+    app.globalData.stu_pro_index = e.detail.value
+
+  },
+  getAllType: function () {
+    let self = this
+    wx.request({
+      url: app.globalData.rootDomain + '/service/teacher/listProfession',
+      method: 'POST',
+      success: function (res) {
+        console.log('zhuanye')
+        let professions = res.data.data.professions
+        let all={
+          name:'请选择专业',
+          id:0
+        }
+        professions.splice(0,0,all)
+        self.setData({
+          array:professions,
+          
+        })
+        console.log(self.data.array)
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
+  },
 
 });

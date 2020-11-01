@@ -1,0 +1,114 @@
+<!--pages/addTeaching/addTeaching.wxml-->
+<view class="page">
+          <!-->
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell  ">
+ 
+            <view class="weui-cell__hd">
+                <view class="weui-label">课程名称</view>
+            </view>
+            -->
+
+<view style="margin-top:50rpx;"></view>
+
+ <view class="weui-search-bar">
+        <picker mode="selector" bindchange="typeChange" class="picker" value="{{index}}" range="{{professions}}" range-key="name">
+            <text >{{professions[index].name}}</text>
+            <text class="cuIcon-triangledownfill"></text>
+        </picker>
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索课程" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索课程</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">
+            取消
+        </view>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+        <view class="weui-cell" hover-class="weui-cell_active" wx:if="{{len==0}}">
+            <view class="weui-cell__bd" wx:if="{{len==0}}">
+                <view>暂无相关课程！</view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="weui-cell" hover-class="weui-cell_active" wx:for="{{serachCourse}}" wx:for-item="item">
+                <view class="weui-cell__bd flex  justify-start align-end" bindtap="change" data-id="{{item.course_id}}" data-name="{{item.course_name}}">
+                    <view>{{item.course_name}}</view>
+                    <view class="cu-tag round" style="margin-left:10px">{{item.course_type}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+<!-->        </view>
+        <-->
+    
+
+<!-->
+        <view class="weui-cell  ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">授课教师</view>
+            </view>
+            -->
+<view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索教师" value="{{inputVal2}}" focus="{{inputShowed2}}" bindinput="inputTyping2" />
+                <view class="weui-icon-clear" wx:if="{{inputVal2.length > 0}}" bindtap="clearInput2">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed2}}" bindtap="showInput2">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索教师</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed2}}" bindtap="hideInput2">
+            取消
+        </view>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal2.length > 0}}">
+        <view class="weui-cell" hover-class="weui-cell_active" wx:if="{{len2==0}}">
+            <view class="weui-cell__bd" wx:if="{{len2==0}}">
+                <view>暂无相关老师！</view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="weui-cell" hover-class="weui-cell_active" wx:for="{{serachTeacher}}" wx:key="index" wx:for-item="item">
+                <view class="weui-cell__bd flex  justify-start align-end" bindtap="change2" data-id="{{item.id}}" data-name="{{item.name}}">
+                    <view>{{item.name}}</view>
+                    <view class="cu-tag round" style="margin-left:10px">{{item.dept}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+     <!-->   </view> 
+      
+
+
+
+    </view>-->
+
+
+
+    
+    <view>
+        <button class="add" bindtap="add">确认添加</button>
+    </view>
+</view>
+
+
+
+
+

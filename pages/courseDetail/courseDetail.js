@@ -46,7 +46,7 @@ Page({
     showAll:function(e){
       var that = this;
       wx.request({
-        url: 'http://www.ecnucs.club:8000/service/course/listCourse', /*修改more_coursecmt即可*/
+        url: app.globalData.rootDomain + '/service/course/listCourse', /*修改more_coursecmt即可*/
         method: 'POST',
         data: { /*根据接口需要选择需要POST的数据*/
           course_id: that.data.courseId,
@@ -83,7 +83,7 @@ Page({
       requestTeacher: function(){
           var that = this;
           wx.request({
-            url: 'http://www.ecnucs.club:8000/service/course/course_teaching', /*修改more_coursecmt即可*/
+            url: app.globalData.rootDomain + '/service/course/course_teaching', /*修改more_coursecmt即可*/
             method: 'POST',
             data: { /*根据接口需要选择需要POST的数据*/
               res_id: that.data.courseId,
@@ -118,7 +118,7 @@ Page({
           title: '加载中',
         })
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/comment/more_comment', /*修改more_coursecmt即可*/
+          url: app.globalData.rootDomain + '/service/comment/more_comment', /*修改more_coursecmt即可*/
           method: 'POST',
           data: { /*根据接口需要选择需要POST的数据*/
             res_id: that.data.courseId,

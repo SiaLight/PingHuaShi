@@ -1,6 +1,10 @@
 <!-- logs.wxml -->
 <view class="page">
     <view class="weui-search-bar">
+        <picker mode="selector" bindchange="typeChange" class="picker" value="{{index}}" range="{{professions}}" range-key="name" >
+            <text >{{professions[index].name}}</text>
+            <text class="cuIcon-triangledownfill"></text>
+        </picker>
         <view class="weui-search-bar__form">
             <view class="weui-search-bar__box">
                 <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -48,3 +52,17 @@
         </view>
     </view>
 </view>
+
+<block wx:if="{{role == 3}}">
+<view class="plus" bindtap="addcourse">
+    <image src="../../images/addP.png"  class="add" />
+    <view style="margin-left:5px;">添加新开课程</view>
+    
+</view>
+
+<view class="plus2" bindtap="addteaching">
+    <image src="../../images/addP.png"  class="add" />
+    <view style="margin-left:5px;">添加授课教师</view>
+    
+</view>
+</block>

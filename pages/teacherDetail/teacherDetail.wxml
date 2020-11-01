@@ -2,7 +2,7 @@
     <view class="bg-white">
         <view>
             <view class="flex  justify-start align-end" style="padding-top:10px">
-                <view class="cu-avatar lg round margin-left" style="background-image:url({{teacher.avatar_url}});"></view>
+                <view class="cu-avatar lg round margin-left" style="background-image:url({{teacher.avatar_url}});over-flow:auto;"></view>
                 <view class="name" style="margin-left:3px">
                     <text>{{teacher.name}}</text>
                 </view>
@@ -16,8 +16,8 @@
         </view>
         <view style="padding-left:15px">
             <view class="desBox">
-                <text class="des" bindtap="showTeacherIndex" >{{teacher.index_url}}</text>
-                <view bindtap="copyIndex" style="margin-left:20rpx;">复制</view>
+                <view class="des" style="width:600rpx;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all;" bindtap="showTeacherIndex" >{{teacher.index_url}}</view>
+                <view bindtap="copyIndex" style="margin-left:5rpx;">复制</view>
             </view>
             <view class="scoreBox bg-white">
                 <view class="score">

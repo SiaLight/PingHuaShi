@@ -30,7 +30,7 @@ Page({
           inputVal: e.detail.value
       });
       wx.request({
-        url: 'http://www.ecnucs.club:8000/service/teacher/listTeacher', /*修改more_coursecmt即可*/
+        url: app.globalData.rootDomain + '/service/teacher/listTeacher', /*修改more_coursecmt即可*/
         method: 'POST',
         data: { /*根据接口需要选择需要POST的数据*/
           name: that.data.inputVal,
@@ -64,7 +64,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/teacher/listTeacher', /*修改more_coursecmt即可*/
+      url: app.globalData.rootDomain + '/service/teacher/listTeacher', /*修改more_coursecmt即可*/
       method: 'POST',
       data: { /*根据接口需要选择需要POST的数据*/
         deptId: that.data.id,

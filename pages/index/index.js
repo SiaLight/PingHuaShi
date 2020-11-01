@@ -50,7 +50,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/hot_comment',
+      url: app.globalData.rootDomain + '/service/comment/hot_comment',
       method: 'POST',
       data: {
         cmt_type: that.data.cmt_type,
@@ -115,7 +115,7 @@ Page({
       comment: [],
     })
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/hot_comment',
+      url: app.globalData.rootDomain + '/service/comment/hot_comment',
       method: 'POST',
       data: {
         cmt_type: that.data.cmt_type,
