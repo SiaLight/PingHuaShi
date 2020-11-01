@@ -12,8 +12,12 @@
     "pages/teacherDetail/teacherDetail",
     "pages/grade/grade",
     "pages/teacherIndex/teacherIndex",
+<<<<<<< HEAD
     "pages/addCourse/addCourse",
     "pages/addTeaching/addTeaching"
+=======
+    "pages/addCourse/addCourse"
+>>>>>>> feaa4ce6ecbcd84578d0055bf26f05c358b9fc4d
   ],
   "window": {
     "backgroundTextStyle": "light",
