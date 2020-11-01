@@ -46,7 +46,7 @@ Page({
         title: '加载中',
       })
       wx.request({
-        url: 'http://www.ecnucs.club:8000/service/comment/more_comment', /*修改more_coursecmt即可*/
+        url: app.globalData.rootDomain + '/service/comment/more_comment', /*修改more_coursecmt即可*/
         method: 'POST',
         data: { /*根据接口需要选择需要POST的数据*/
           res_id: that.data.id,
@@ -87,7 +87,7 @@ Page({
         title: '加载中',
       })
       wx.request({
-        url: 'http://www.ecnucs.club:8000/service/comment/more_comment', /*修改more_coursecmt即可*/
+        url: app.globalData.rootDomain + '/service/comment/more_comment', /*修改more_coursecmt即可*/
         method: 'POST',
         data: { /*根据接口需要选择需要POST的数据*/
           res_id: that.data.id,

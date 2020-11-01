@@ -13,7 +13,7 @@ Page({
     isTourist: true,
     page_num: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    array: ['点击此处选择专业', '计算机科学与技术', '软件工程','心理认知科学'],
+    array: [],
     index: 0,
   },
 
@@ -47,7 +47,7 @@ Page({
         console.log(res.code)
         //获取openid
         wx.request({
-          url: 'http://www.ecnucs.club:8000/service/user/getOpenid',
+          url: app.globalData.rootDomain + '/service/user/getOpenid',
           method: "POST",
           data: {
             js_code: res.code,
@@ -67,8 +67,7 @@ Page({
                 })
               }
               else /************************测试阶段无法登录时以下openid二选一******************************/
-                app.globalData.openid = 'TestOpenid'   //wjh的微信openid
-                //app.globalData.openid = 'oNgc_5cCqIf4jiPpxX-5Jk0kZ3uI'   //zjh的微信openid
+                app.globalData.openid = 'TestOpenid' 
             //} //全局信息存储
             that.login()
           },
@@ -152,7 +151,7 @@ Page({
       title: '登录中',
     });
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/user/login',
+      url: app.globalData.rootDomain + '/service/user/login',
       method: "POST",
       data: {
         openid: app.globalData.openid,
@@ -251,7 +250,7 @@ Page({
       title: '加载中',
     });
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/user/create',
+      url: app.globalData.rootDomain + '/service/user/create',
       method: 'POST',
       data: {
         openid: app.globalData.openid,
@@ -319,7 +318,7 @@ Page({
       title: '认证中',
     });
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/user/auth',
+      url: app.globalData.rootDomain + '/service/user/auth',
       method: 'POST',
       data: {
         id: app.globalData.user_id,
@@ -375,31 +374,42 @@ Page({
   },
 
   student:function(e){
+    this.setData({
+      isTourist:false
+    })
+    this.getAllType()
     if (app.globalData.hasLogout == true){
       this.setData({
         page_num: 1
       })
     }
     else{
-      this.setData({
-        isTourist: false
-      })
       this.register()
     }
       
   },
 
   tourist: function (e) {
+    this.setData({
+      isTourist:true
+    })
     if (app.globalData.hasLogout == true)
       this.login()
     else
       this.register()
   },
 
+  tourist_login:function(){
+    this.setData({
+      isTourist: true
+    })
+    this.login();
+  },
+
   searchRead: function () {
     var that = this;
     wx.request({
-      url: 'http://www.ecnucs.club:8000/service/comment/search_read',
+      url: app.globalData.rootDomain + '/service/comment/search_read',
       method: "POST",
       data: {
         user_id: app.globalData.user_detail.user_id
@@ -440,7 +450,35 @@ Page({
       index: e.detail.value,
       choose_index: e.detail.value
     })
+    app.globalData.stu_pro_index = e.detail.value
+    console.log(app.globalData.stu_pro_index)
 
+  },
+
+
+  getAllType: function () {
+    let self = this
+    wx.request({
+      url: app.globalData.rootDomain + '/service/teacher/listProfession',
+      method: 'POST',
+      success: function (res) {
+        console.log('zhuanye')
+        let professions = res.data.data.professions
+        let all={
+          name:'请选择专业',
+          id:0
+        }
+        professions.splice(0,0,all)
+        self.setData({
+          array:professions,
+          
+        })
+        console.log(self.data.array)
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
   },
 
 })

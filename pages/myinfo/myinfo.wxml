@@ -104,7 +104,7 @@
           <view class="list">
             <view class="weui-cells weui-cells_after-title" wx:for="{{advice}}" wx:for-item="item" wx:key="key">
               <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd" bindtap="{{item.jump}}">{{item.title}}</view>
+                <view class="weui-cell__bd" bindtap="{{item.jump}}" >{{item.title}}</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
             </view>
@@ -127,7 +127,7 @@
                   <textarea  style="height:100%;" type='text' maxlength="{{maxWords}}"  placeholder="请写下您发现的问题，我们将会尽快处理"  bindinput='get_advice'/> 
                 </view>
                   <view style="height=20rpx; width:90%;display: flex;justify-content:flex-end; font-size:28rpx; color:rgb(177, 176, 176);">{{currentWords}}/{{maxWords}}</view>
-                <image src="../../images/send.png" class="on-motto" bindtap="commiton"></image>
+                <image src="../../images/send.png" class="on-motto" bindtap="commiton" data-errtype="{{item.title}}"></image>
               </view>
           </view>
        </view>
@@ -157,7 +157,7 @@
                     <view class="weui-label">密码</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入密码" value="{{stu_pwd}}" bindinput='get_stu_pwd'/>
+                    <input class="weui-input" placeholder="请输入密码" value="{{stu_pwd}}" type="password" bindinput='get_stu_pwd'/>
                 </view>
                 <!-->
                 <view class="weui-cell__ft">
@@ -167,8 +167,8 @@
             </view>
          </view>
 
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <button class="index_choo" >{{array[index]}}</button>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
+      <button class="index_choo" >{{array[index].name}}</button>
     </picker>
           
          <view class="weui-cells__tips">"评华师"为您的信息安全做出保证。</view>
@@ -177,3 +177,5 @@
         
      </view>  
 </view>
+
+

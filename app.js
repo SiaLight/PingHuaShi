@@ -29,6 +29,7 @@ App({
   },
 
   globalData: {
+    teacher_id: 0,
     timerA: null,
     timerB: null,
     news_num: 0,
@@ -39,6 +40,8 @@ App({
     userInfo: null,
     openid: null,
     user_detail:{},
+    stu_pro_index: 0,
+    rootDomain: 'http://www.ecnucs.club:8000'
   },
 
 })

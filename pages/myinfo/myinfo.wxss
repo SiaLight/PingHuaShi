@@ -234,3 +234,19 @@
   border-radius: 0rpx;
   margin-bottom: 20rpx;
 }
+
+
+
+.index_choo{
+  font-size: 30rpx;
+  color: #2f3f48;
+  background-color: white;
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 100vw;
+  z-index:999;
+  border-top: 1rpx solid #2f3f48;
+  border-bottom: 1rpx solid #2f3f48;
+  border-radius: 0rpx;
+  margin-bottom: 20rpx;
+}
