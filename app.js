@@ -41,7 +41,8 @@ App({
     openid: null,
     user_detail:{},
     stu_pro_index: 0,
-    rootDomain: 'https://ecmt.yiwangchunyu.wang'
+    rootDomain: 'https://ecmt.yiwangchunyu.wang',
+    //rootDomain: 'http://www.ecnucs.club:8000'
   },
 
 })

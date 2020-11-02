@@ -36,12 +36,18 @@
                 </view>
                 <view wx:else>暂无该教师相关评论！</view>
             </view>
+
+        <view class="pingfen" bindtap="grade" data-id="{{id}}" data-is-course="{{nCourse}}">
+            <text class="textQ">轻点评分</text>
+        </view>
+<!-->
             <view class="pingfen">
                 <text class="textQ">轻点评分</text>
                 <view bindtap="grade" data-id="{{id}}" data-is-course="{{nCourse}}">
                     <star score="0"></star>
                 </view>
             </view>
+-->
             <view wx:for="{{courses}}" wx:for-item="item" wx:key="index" wx:if="{{courseL>0}}">
                 <view class="teacherBox">
                     <view class="teacher">

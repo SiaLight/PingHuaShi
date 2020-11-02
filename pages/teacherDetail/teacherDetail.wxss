@@ -61,10 +61,25 @@
       padding: 10px;
   }
 
-  .textQ{
+  /*.textQ{
       font-size: 14px;
       color: #353535;
       margin-right: 10px;
+  }*/
+
+    .textQ{
+      font-size: 14px;
+      margin-right: 10px;
+      border-radius: 10%;
+       background-color: #c90027;
+      color:white;
+      width: 150rpx;
+      height:50rpx;
+      line-height: 50rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
   }
 
   .teacher{

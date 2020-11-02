@@ -20,7 +20,8 @@ Component({
     zan: [],
     cai: [],
     agreeUrl: '../../images/zan.png',
-    disAgreeUrl: '../../images/cai.png'
+    disAgreeUrl: '../../images/cai.png',
+    whoUrl: '../../images/who.png'
 
 
   },

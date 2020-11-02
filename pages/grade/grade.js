@@ -12,7 +12,7 @@ Page({
         scoreText: ['1星', '2星', '3星', '4星', '5星'], //评分列表
         scoreContent: '',
         comment:'' ,//文字显示评分情况
-        hasAnonymity: false
+        hasAnonymity: 0
     },
     onShow: function (e){
       console.log(app.globalData.user_detail)
@@ -111,7 +111,8 @@ Page({
                   res_type: '课程',
                   user_id: that.data.user.user_id,
                   score: that.data.score * 2,
-                  comment: that.data.comment
+                  comment: that.data.comment,
+                  show_user: that.data.hasAnonymity ^ 1
                 },
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
@@ -140,7 +141,8 @@ Page({
             res_type: '教师',
             user_id: that.data.user.user_id,
             score: that.data.score*2,
-            comment: that.data.comment
+            comment: that.data.comment,
+            show_user: that.data.hasAnonymity ^ 1
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'
@@ -185,13 +187,13 @@ Page({
 
   noAnonymity: function () {
     this.setData({
-      hasAnonymity: false
+      hasAnonymity: 0
     })
   },
 
   doAnonymity: function () {
     this.setData({
-      hasAnonymity: true
+      hasAnonymity: 1
     })
   },
 

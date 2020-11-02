@@ -133,6 +133,14 @@ Page({
       })
   },
   grade: function(e){
+    if (app.globalData.user_detail.role == 1) {
+      wx.showToast({
+        title: '请先认证',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
     wx.navigateTo({
       url:'../grade/grade?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
     })
