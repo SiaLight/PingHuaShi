@@ -28,7 +28,6 @@ Page({
   },
 
   onLoad: function () {
-    
   },
 
   

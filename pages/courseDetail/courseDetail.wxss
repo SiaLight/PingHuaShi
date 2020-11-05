@@ -8,6 +8,7 @@ page{
     font-size: 16px;
     font-weight: bolder;
     margin-top: 10px;
+    max-width:80vw;
 }
 .des{
     margin-top: 10px;
@@ -15,9 +16,9 @@ page{
     font-size: 14px;
     width:85%;
     display: -webkit-box;
-  -webkit-box-orient:vertical;
-  text-overflow: ellipsis;
-  overflow:hidden; 
+    -webkit-box-orient:vertical;
+    text-overflow: ellipsis;
+    overflow:hidden; 
 }
 .ellipsis{
     -webkit-line-clamp:2;

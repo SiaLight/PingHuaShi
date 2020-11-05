@@ -46,7 +46,7 @@
                 <view class="weui-label" >课程简介</view>
             </view>
             <view class="weui-cell__bd">
-                <textarea adjust-position="{{true}}" placeholder="请输入简介" value="{{des}}" maxlength="200" bindinput="get_des"></textarea>
+                <textarea style="width:100%;" adjust-position="{{true}}" placeholder="请输入简介" value="{{des}}" maxlength="200" bindinput="get_des"></textarea>
             </view>
         </view>
     </view>

@@ -168,5 +168,16 @@ Page({
         wx.navigateTo({
           url:'../grade/grade?id='+e.currentTarget.dataset.id+'&isCourse='+e.currentTarget.dataset.isCourse
         })
+      },
+  copyIndex: function (e) {
+    wx.setClipboardData({
+      data: this.data.course.course_intro,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          duration: 2000
+        })
       }
+    })
+  }
 })

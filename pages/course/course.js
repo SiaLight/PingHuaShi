@@ -16,25 +16,29 @@ Page({
         image: "../../images/course.png"
       },
       {
-        title: "专业必修课程",
+        title: "专业教育课程",
         image: "../../images/course.png"
       },
       {
-
-        title: "专业选修课程",
+        title: "计算机类",
         image: "../../images/course.png"
       },
       {
-        title: "通识必修课程",
+        title: "英语类",
         image: "../../images/course.png"
       },
       {
-        title: "通识选修课程",
+        title: "思政类",
         image: "../../images/course.png"
       },
-      
-
-
+      {
+        title: "体育类",
+        image: "../../images/course.png"
+      },
+      {
+        title: "其他类别课程",
+        image: "../../images/course.png"
+      },
     ]
   },
   onLoad:function(){
