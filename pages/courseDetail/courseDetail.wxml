@@ -34,7 +34,7 @@
         <view wx:for="{{teachers}}" wx:for-item="item" wx:key="index" wx:if="{{teacherL>0}}">
             <view  class="teacherBox">
                 <view class="teacher">
-                    <text style="margin-right:10px;font-size:14px;color:#000000">授课老师：{{item.name}}</text>
+                    <text style="margin-right:10px;font-size:14px;color:#000000">{{item.name}}</text>
                     <star score="{{item.avg_score}}"></star>
                 </view>
                 <view  bindtap="moreComment" data-id="{{item.teacher_id}}" data-is-course="{{nCourse}}">

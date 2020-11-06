@@ -490,6 +490,14 @@ Page({
       })
       return;
     }
+    if (that.data.index == 0) {
+      wx.showToast({
+        title: '请选择专业',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
     wx.showLoading({
       title: '加载中',
     });
@@ -499,7 +507,8 @@ Page({
       data: {
         id: app.globalData.user_detail.user_id,
         stu_id: that.data.stu_id,
-        pwd: that.data.stu_pwd
+        pwd: that.data.stu_pwd,
+        stu_pro_index: that.data.index,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -545,9 +554,8 @@ Page({
     that.setData({
       comment: [],
       index: e.detail.value,
-      choose_index: e.detail.value
     })
-    app.globalData.stu_pro_index = e.detail.value
+    //app.globalData.stu_pro_index = e.detail.value
 
   },
   getAllType: function () {
@@ -559,7 +567,7 @@ Page({
         console.log('zhuanye')
         let professions = res.data.data.professions
         let all={
-          name:'请选择专业',
+          name:'请选择专业(教师选择:其他专业)',
           id:0
         }
         professions.splice(0,0,all)

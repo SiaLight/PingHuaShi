@@ -22,3 +22,10 @@ line-height: 35rpx;
     height: 60rpx;
 }
 
+.picker{
+    padding-left: 5rpx;
+    padding-right: 5rpx;
+    max-width:180rpx;
+    text-align: center;
+}
+

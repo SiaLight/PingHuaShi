@@ -113,7 +113,7 @@ Page({
 
   },
   onShow:function(){
-    var k = app.globalData.stu_pro_index
+    var k = app.globalData.user_detail.stu_pro_index
     this.setData({
       index: k,
       role: app.globalData.user_detail.role

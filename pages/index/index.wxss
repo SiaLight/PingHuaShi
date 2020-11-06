@@ -101,7 +101,7 @@ page{
 }
 
 .banners {
-  width: 100%;
+  width: 100vw;
   height: 400rpx;
   position:fixed;
   top: 0;

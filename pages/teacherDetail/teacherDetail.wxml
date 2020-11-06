@@ -51,7 +51,7 @@
             <view wx:for="{{courses}}" wx:for-item="item" wx:key="index" wx:if="{{courseL>0}}">
                 <view class="teacherBox">
                     <view class="teacher">
-                        <text style="margin-right:10px;font-size:14px;color:#000000">所授课程：{{item.name}}
+                        <text style="margin-right:10px;font-size:14px;color:#000000">{{item.name}}
 </text>
                         <star score="{{item.avg_score}}"></star>
                     </view>

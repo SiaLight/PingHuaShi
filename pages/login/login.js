@@ -161,10 +161,7 @@ Page({
       },
       success: res => {
         var that = this
-        app.globalData.timerA = setInterval(function () {
-          //console.log('timerA')
-          that.searchRead();//循环执行代码
-        }, 1000) 
+      
         console.log(res.data)
         wx.hideLoading()
         if (res.data.code == 0) {
@@ -177,6 +174,10 @@ Page({
             icon: 'success',
             duration: 1000,
             success(res){
+              app.globalData.timerA = setInterval(function () {
+                //console.log('timerA')
+                that.searchRead();//循环执行代码
+              }, 1000)
               setTimeout(function () {
                 wx.switchTab({
                   url: '../index/index',
@@ -184,10 +185,6 @@ Page({
               }, 100)
             }
           })
-          
-          /*wx.switchTab({
-            url: '../index/index',
-          })*/
         }
         else {
           wx.showToast({
@@ -314,6 +311,14 @@ Page({
       })
       return;
     }
+    if (that.data.index == 0) {
+      wx.showToast({
+        title: '请选择专业',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
     wx.showLoading({
       title: '认证中',
     });
@@ -323,7 +328,8 @@ Page({
       data: {
         id: app.globalData.user_id,
         stu_id: that.data.stu_id,
-        pwd: that.data.stu_pwd
+        pwd: that.data.stu_pwd,
+        stu_pro_index: that.data.index,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -448,10 +454,9 @@ Page({
     that.setData({
       comment: [],
       index: e.detail.value,
-      choose_index: e.detail.value
     })
-    app.globalData.stu_pro_index = e.detail.value
-    console.log(app.globalData.stu_pro_index)
+    //app.globalData.stu_pro_index = e.detail.value
+    //console.log(app.globalData.stu_pro_index)
 
   },
 
@@ -465,7 +470,7 @@ Page({
         console.log('zhuanye')
         let professions = res.data.data.professions
         let all={
-          name:'请选择专业',
+          name:'请选择专业(教师选择:其他专业)',
           id:0
         }
         professions.splice(0,0,all)

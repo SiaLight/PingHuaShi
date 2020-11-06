@@ -90,7 +90,7 @@ Page({
       title: '加载中',
     })
     let data
-    if (that.data.index == 0) {
+    if (that.data.index == 0 || that.data.type == '计算机类' || that.data.type == '英语类' || that.data.type == '思政类' || that.data.type == '体育类' || that.data.type == '其他类别课程' ) {
       data = {
         course_type: that.data.type
       }
@@ -141,6 +141,18 @@ Page({
   },
   getAllType: function () {
     let self = this
+    if (self.data.type == '计算机类' || self.data.type == '英语类' || self.data.type == '思政类' || self.data.type == '体育类' || self.data.type == '其他类别课程' ){
+      let professions = [
+        {
+          name: '不限专业',
+          id: 0
+        }
+      ]
+      self.setData({
+        professions: professions
+      })
+      return
+    }
     wx.request({
       url: app.globalData.rootDomain + '/service/teacher/listProfession',
       method: 'POST',

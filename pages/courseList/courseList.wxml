@@ -1,6 +1,6 @@
 <view class="page">
     <view class="weui-search-bar">
-        <picker mode="selector" bindchange="typeChange" class="picker" value="{{index}}" range="{{professions}}" range-key="name">
+        <picker wx:if="{{type=='学科基础课程' || type=='专业教育课程'}}" mode="selector" bindchange="typeChange" class="picker" value="{{index}}" range="{{professions}}" range-key="name">
             <text >{{professions[index].name}}</text>
             <text class="cuIcon-triangledownfill"></text>
         </picker>

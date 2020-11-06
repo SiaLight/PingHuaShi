@@ -30,13 +30,11 @@ Page({
   onLoad: function () {
   },
 
-  
-
-  onShow: function (e) {
+  refresh:function(){
     this.showHotComment();
   },
 
-  refresh: function () {
+  onShow: function (e) {
     this.showHotComment();
   },
 

@@ -2,19 +2,21 @@
   <view class="cu-item shadow ">
     <view class="cu-list menu-avatar">
             <view class="cu-item">
-                 <view wx:if="{{comment.show_user==1}}" class="cu-avatar round lg" style="background-image:url({{comment.avatar_url}});"></view>
-                 <view wx:else class="cu-avatar round lg" style="background-image:url({{whoUrl}});"></view>
+                 <image wx:if="{{comment.show_user==1}}" class="cu-avatar round lg" src="{{comment.avatar_url}}"></image>
+                 <image wx:else class="cu-avatar round lg" src="{{whoUrl}}"></image>
                  
                  <view class="content flex-sub" style="width:auto">
                      <view class="name" wx:if="{{comment.show_user==1}}">{{comment.nick_name}}</view>
                      <view class="name" wx:else>匿名用户</view>
-                      <!--<view class="identifi">计算机科学与技术</view> -->
-                       <star score="{{comment.stars}}" isStar="{{isStar}}"></star>
-                </view>
+                       
+                     <star score="{{comment.stars}}" isStar="{{isStar}}"></star>
+                      
+           </view>
                  
               
           <view class="ping" wx:if="{{card}}" >
-            <view > 评价{{comment.resName}} <star  score="{{comment.score}}"></star></view>
+            <view style="text-align: center;"> {{comment.resName}} </view>
+            <star score="{{comment.score}}"></star>
            </view>
           
         </view>

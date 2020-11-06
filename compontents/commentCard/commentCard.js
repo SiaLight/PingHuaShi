@@ -22,8 +22,6 @@ Component({
     agreeUrl: '../../images/zan.png',
     disAgreeUrl: '../../images/cai.png',
     whoUrl: '../../images/who.png'
-
-
   },
   // 组件生命周期
   lifetimes: {

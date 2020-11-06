@@ -1,4 +1,5 @@
 <!--index.wxml-->
+
   <swiper indicator-dots="true" autoplay="true" class="banners" interval="3000" duration="2000">
     <block wx:for="{{swiper_url}}" wx:key="index" for-item="item">
       <swiper-item class="banner">
@@ -9,7 +10,8 @@
 
 
 
-  <scroll-view scroll-with-animation style="margin-top:400rpx;height: {{scrollHeight}}px" scroll-y scroll-top="{{scrollTop}}" bindscroll="scrolling" bindscrolltoupper="refresh">
+
+  <scroll-view scroll-with-animation style="margin-top:400rpx;height: {{scrollHeight}}px" scroll-y scroll-top="{{scrollTop}}" bindscroll="scrolling" >
 
   <!-->
      <image class="indexback"  src='/images/indexback.png' mode="cover"></image>

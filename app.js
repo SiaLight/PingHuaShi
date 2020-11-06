@@ -34,7 +34,7 @@ App({
     timerB: null,
     news_num: 0,
     hasLogout: false,
-    user_id: null,
+    user_id: 0,
     is_init: false,
     isLogin: false,
     userInfo: null,

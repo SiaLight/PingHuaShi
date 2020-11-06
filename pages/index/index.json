@@ -5,5 +5,5 @@
     "star": "../../compontents/star/star",
     "commentCard": "../../compontents/commentCard/commentCard"
   },
-"enablePullDownRefresh": false
+  "enablePullDownRefresh": false
 }

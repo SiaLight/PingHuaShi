@@ -3,10 +3,10 @@
  padding: 10px;
 }
 .picker{
-    padding-left: 15rpx;
-    padding-right: 15rpx;
-    width:200rpx;
-    text-align: center;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+  max-width:180rpx;
+  text-align: center;
 }
 
 .plus{
